@@ -1,0 +1,83 @@
+Provide metrics for each topic defined in supplier performance Dashboard
+
+Built cards for each of the topics given below in two column structure.
+
+Supplier Performance Dashboard :
+    *   Overall Metrics: 
+
+        - 💰Total Purchase Value: X Billion
+        - 📦Total Quantity Purchased: X Million
+        - 🏢Number of Unique Suppliers: X
+        - 📜Number of Unique Bills: X
+        - 📝Number of Unique POs: X
+        - 💲Average Unit Price (Overall): X
+
+
+    *   Delivery Volatility & Risk Insights:(3 examples for each)
+            ⚠️Volatile Suppliers:
+                Dubai Exports:High Price Fluctuation (1,770.15)
+
+                HEWLET:Inconsistent Purchase Frequency
+
+                MERCY ACCRA:Inconsistent Purchase Frequenc
+            📉Declining Price Trend:
+                MODTAY CO LTD:Price Trend Observation: Declining
+
+                China Investements:Price Trend Observation: Declining
+
+                HEWLET:Price Trend Observation: Declining
+            📈Increasing Price Trend:
+    *   Month Wise breakdown: 
+        Purchase Frequency (Avg. Bills per Month):
+
+            HEWLET:8.0
+
+            MERCY ACCRA:6.625
+
+            MODTAY CO LTD:4.6
+    *   Trend Analysis:
+            * Suppliers with Declining Price Trend:
+               - MODTAY CO LTD:Observed Declining Trend
+               - China Investements:Observed Declining Trend
+               - HEWLET:Observed Declining Trend
+
+            * Suppliers with Increasing Price Trend:
+               - MR.BEAUTIFUL:Observed Increasing Trend
+               - OTTER:Observed Increasing Tren
+               - FOREWIN GHANA LIMITED:Observed Increasing Trend
+
+            * Suppliers with Stable Pricing:
+               - NANKANI & HAGAN LTD:Single purchase/Stable
+               - SALIMK SUPS:Single purchase/Stable
+
+    *   Operational Red Flags & Actions: 
+            High Value Purchase Observation:
+                -
+            Inconsistent/Volatile Frequency Observation:
+                - HEWLET, MERCY ACCRA, MOGA ENT
+            Potentially Seasonal Frequency Observation:
+                - FUEL TRADE, BLOOM EXPORTS
+    *   Top 5 vs. Other Suppliers:
+    *   Insights
+    *   Recommendations
+    *   bottlenecks
+
+
+
+
+
+ALl of these cards should in two columns of card. Two cards in one row.
+Key insight seprately should in one card and in one column.
+Maintain the gap between the cards.
+gap :10 px 
+padding:10px 
+Dynamically adjust card and table width.
+
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards (mandatory).
+2. Keep spacing consistent, align numbers to right.
+3. Build a professional dashboard.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+7. Use this type of figures in table 1,20,000 

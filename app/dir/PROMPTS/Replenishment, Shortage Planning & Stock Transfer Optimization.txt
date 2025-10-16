@@ -1,0 +1,22 @@
+"Analyze the Periodical Stock Summary report and generate actionable insights for:
+🔁 Replenishment & Shortage Planning
+🚨 Low Stock Risk Items:
+Items with low Closing Balance Qty but high Issue Qty → likely to go out of stock soon
+Recommend reorder quantity based on consumption trends
+🔄 Continuously Moving Items:
+Identify items with frequent Receipts and Issues → high demand
+Suggest monitoring frequency or automation of restocking
+🤖 AI-Powered Predictions:
+Forecast potential stockouts based on historical Issue Qty vs current Closing Balance
+Recommend reorder quantity in Pack Size multiples, if applicable
+ 
+ 
+🔄 Stock Transfer Optimization (Across Warehouses)
+🏭 Redistribute Underutilized Stock:
+Detect items with high Closing Balance and low/no Issues in certain warehouses (dead/slow stock)
+Compare with other locations where the same item is fast-moving but low in stock
+Recommend inter-warehouse stock transfers to reduce overstock and avoid shortages
+💡 Smart Suggestions:
+Prioritize transfers over fresh procurement if excess stock exists in the network
+Flag items for central stock pool creation if trends are location-cyclical
+Return a table with: Item Code, Description, From-Warehouse, To-Warehouse, Current Closing Balances, Movement Status, and Suggested Action"

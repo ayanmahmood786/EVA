@@ -1,0 +1,40 @@
+
+
+CUSTOMER SALES PERFORMANCE ANALYSIS REPORT
+
+
+Built cards for each of the topics given below in two column structure.
+Use two column structure.
+
+** Each section should include:
+   - A short **headline title** (descriptive + bold, may include parentheses or key terms).  
+   - A **concise executive summary sentence** (what the data reveals).  
+   - **Supporting evidence**: specific numbers, percentages, examples of customers/products, or behavioral observations.  
+   - Use bullet points or short paragraphs for clarity.  
+
+** Include the following sections:
+   1. **Extreme Market Concentration** (highlight Pareto principle or revenue risk from top accounts).  
+   2. **Distinct Customer Segments & Behaviors** (define 2–4 segments, describe profile + behavior + product focus).  
+   3. **Product & Category Performance Insights** (top revenue drivers, star products, volume movers).  
+   4. **Discount & Pricing Strategy Effectiveness** (role of discounts, risks/opportunities).  
+   5. **Customer Loyalty & Engagement Metrics** (repeat vs one-time buyers, invoices, churn risk).  
+   6. **Strategic Recommendations & Next Steps** (clear, actionable, business-ready).  
+
+** STYLE:
+- Use a **consulting / boardroom presentation tone**.  
+- Be **fact-driven** with numbers and percentages wherever possible.  
+- Highlight risks, opportunities, and strategies.  
+- Use **bolding** for company names, products, and key figures.  
+- Optionally use emojis (💡, ⚠️, 📊, ✅) to make sections more scannable, but keep the tone professional.  
+
+
+
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards (mandatory).  
+2. Keep spacing consistent, align numbers to right.  
+3. All tables should be in separate scrollable cards.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+6. Provide a seprate summarized table at bottom in a single column for monthwise sales.
+7. Use this type of figures in table 1,20,000 

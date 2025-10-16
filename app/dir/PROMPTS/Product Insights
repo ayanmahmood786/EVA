@@ -1,0 +1,67 @@
+Analyze the product performance data and provide comprehensive insights focused specifically on PRODUCT NAME performance, including detailed month-wise consistency analysis. Structure the analysis with clear sections and use visual emojis for emphasis:
+
+This data covers only top 10 and bottom 10 
+write an alert for this.
+**ANALYSIS REQUIREMENTS:**
+
+Use two column format and provide two cards in 2 columns.
+Use points and align properly use <li> tags.
+
+1. **TOP PERFORMING PRODUCTS** 🏆
+   - Identify Revenue Leaders (top 3 by total value)
+   - Identify Volume Champions (top 3 by quantity sold) 
+   - Identify Geographic Dominators (products with >95% region concentration)
+
+2. **LOW PERFORMING PRODUCTS** ⚠️
+   - Identify Revenue Laggards (bottom 3 by total value)
+   - Identify Volume Underperformers (bottom 3 by quantity)
+   - Identify Limited Reach Products (single-region products)
+
+3. **MONTH-WISE CONSISTENCY ANALYSIS** 📅
+   - use proper alignment and use bullet poiints.
+   - Properly utilize the width of cards.
+   - Analyze monthly breakdown patterns for each product
+   - Rate consistency: Excellent (7+ months), Good (5-6 months), Fair (3-4 months), Poor (2 months), Very Poor (1 month)
+   - Identify seasonal patterns and peak months
+   - Highlight products with consistent vs. sporadic sales
+
+4. **PRODUCT CATEGORY INSIGHTS** 📊
+   - Group products into meaningful categories
+   - Identify High-Value Categories (strong revenue drivers)
+   - Identify Underperforming Categories (weak segments)
+
+5. **KEY PRODUCT INSIGHTS** 🎯
+   - Star Products ⭐ (excel in both revenue and volume + consistency)
+   - Problem Products 🔴 (poor performance in multiple areas + inconsistency)
+   - Niche Products 🎯 (specialized but limited reach)
+   - Seasonal Products 📅 (strong peaks but inconsistent)
+
+6. **STRATEGIC RECOMMENDATIONS** 💡
+   - Focus & Invest 🚀 (scale top consistent performers)
+   - Review & Decide ⚖️ (evaluate inconsistent underperformers)
+   - Optimize 🔧 (improve inventory planning for seasonal products)
+   - Monitor 📈 (track consistency patterns for moderate performers)
+
+**MONTHLY ANALYSIS SPECIFICS:**
+- Calculate consistency score (months with sales / total months)
+- Identify products with 6+ months of sales (most consistent)
+- Identify products with only 1-2 months of sales (least consistent)
+- Note extreme seasonality (e.g., >90% sales in single month)
+- Highlight ongoing vs. declining trends
+
+**FORMATTING REQUIREMENTS:**
+- Use clear section headers with emojis
+- Present top/bottom 3 products in each category
+- Provide concrete percentages for geographic analysis
+- Show monthly consistency ratings and patterns
+- Group products into logical categories
+- Offer actionable recommendations for each product type
+- End with a bottom-line summary
+
+**OUTPUT STYLE:** Professional business analysis with clear, actionable insights. Use bullet points and avoid markdown formatting. Focus on product names as the primary unit of analysis with detailed monthly patterns.
+
+1. **Two-column layout** for cards where possible.  
+2. Keep spacing consistent, align numbers to right.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+

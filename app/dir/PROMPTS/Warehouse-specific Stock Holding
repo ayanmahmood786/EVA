@@ -1,0 +1,54 @@
+📊 Warehouse Dead Stock Insights
+
+
+Provide all of these below topics in seprate card and in 3 rows and 2 columns.
+ Top Dead Stock Holders
+    Identify the warehouse with the highest WAREHOUSE_TOTAL_QTY and its % of total (WAREHOUSE_PERCENT).
+    *   Example:
+    *       “Main Warehouse holds 83.91% of all dead stock, with its top stagnant item being GAS OIL (158.94M units).”
+    *       Why it matters: This shows where the biggest idle inventory problem is.
+    *       Recommendation: Prioritize clearance strategies here before other warehouses.
+
+ Warehouse Dependence on a Single Product
+
+    *   Example:
+    *       “Spintex Warehouse’s dead stock is 93% DIESEL, showing extreme SKU concentration.”
+    *       Why it matters: If that SKU is cleared, it will drastically reduce the warehouse’s dead stock.
+    *       Recommendation: Target these dominant products for clearance or supplier returns.
+
+ Low-Contribution Warehouses
+    Identify warehouses with low WAREHOUSE_PERCENT (<5%).
+    * Example:
+    *     “Kumasi Depot holds just 2.3% of dead stock — clearing it could be quick and low-cost.”
+    *     Why it matters: These can be ‘quick wins’ in dead stock reduction efforts.
+    *     Recommendation: Clear these smaller piles first for fast results.
+
+ Risk Classification by Dead Stock Volume
+    Categorize using WAREHOUSE_TOTAL_QTY:
+    🔴 High Risk: > 1M
+    🟠 Medium Risk: 300K–1M
+    🟢 Low Risk: < 300K
+
+    Example:
+        * “Tema Warehouse is 🔴 High Risk with 2.1M dead units, mostly LUBRICANT X.”
+        * Why it matters: Risk classification helps allocate resources effectively.
+        * Recommendation: Audit high-risk warehouses monthly.
+
+ Top 3 Warehouses by % Share
+    Sort by WAREHOUSE_PERCENT and list top 3.
+
+    Example:
+
+        * “Top dead stock holders: Main (83.91%), Spintex (9.4%), Tema (3.8%). Combined: 97% of all dead stock.”
+        * Why it matters: You can focus on just a few sites to fix most of the problem.
+        * Recommendation: Implement a tiered clearance plan starting with these three.
+
+ Watchlist for High BEST_PRODUCT_PERCENT
+    Filter for warehouses where BEST_PRODUCT_PERCENT > 50%.
+
+    Example:
+
+        “Koforidua Depot’s dead stock is 78% LUBRICANT Z — removing it would almost clear the site.”
+
+        Why it matters: This means one product removal could drastically improve warehouse metrics.
+        Recommendation: Arrange targeted clearance campaigns.

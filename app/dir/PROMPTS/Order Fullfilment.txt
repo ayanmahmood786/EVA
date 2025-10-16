@@ -1,0 +1,16 @@
+
+Provide Number metrics for each topic defined below.
+
+
+Provide below topics in seprate card.
+Also provide 3 order metrics atleast.
+### Order Fulfillment & Lifecycle Analysis
+
+*   **Order Fulfillment & Status:** A summary of order statuses (e.g., Open, Partially Fulfilled, Completed, Cancelled).
+*   **Supplier Performance:** Metrics on supplier fulfillment rates and on-time delivery.
+*   **PO Lifecycle Efficiency:** Analysis of the time taken at each stage of the purchase order lifecycle (e.g., PO Creation to Approval, Approval to GRN).
+*   **At-Risk Orders Identification:** Flag orders that are at risk of missing their delivery deadlines.
+*   **Open Purchase Orders Aging Report:** An aging analysis of all open POs to identify and prioritize old, stuck orders.
+
+Statistical Metrics are mandatory.
+Provide dynamically adjustable cards.

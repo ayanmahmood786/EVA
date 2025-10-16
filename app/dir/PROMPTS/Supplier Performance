@@ -1,0 +1,64 @@
+Supplier Performance Insights You Can Generate
+
+Overall Supplier Contribution
+
+Metric: Total Orders (TOTAL_ORDERS) and Total Value (TOTAL_VALUE) per supplier.
+
+Insight prompt:
+
+Identify the top suppliers by total number of orders and total order value. Highlight which suppliers contribute the most to overall procurement.
+
+
+Order Status Distribution
+
+Metric: Number of Cancelled, Completed, and Pending Orders (ORDERS_CANCELLED, ORDERS_COMPLETED, ORDERS_PENDING) and their percentages.
+
+Insight prompt:
+
+For each supplier, report the percentage of orders that were completed, cancelled, or still pending. Highlight suppliers with high cancellation rates or low completion rates.
+
+
+Financial Impact of Order Status
+
+Metric: Order values by status (VALUE_CANCELLED, VALUE_COMPLETED, VALUE_PENDING).
+
+Insight prompt:
+
+Calculate the total monetary impact of cancelled, completed, and pending orders per supplier. Highlight suppliers with high value of cancelled orders that may affect costs.
+
+
+Supplier Reliability Ranking
+
+Metric: % Completed vs % Cancelled.
+
+Insight prompt:
+
+Rank suppliers based on order completion rate. Flag suppliers with completion rate below 80% and/or cancellation rate above 10%.
+
+
+Pending Order Analysis
+
+Metric: % Pending and VALUE_PENDING.
+
+Insight prompt:
+
+Identify suppliers with significant pending orders both in count and value. Assess potential supply chain delays or bottlenecks.
+
+
+Balanced View of Quantity vs Value
+
+Metric: Compare TOTAL_ORDERS vs TOTAL_VALUE.
+
+Insight prompt:
+
+Highlight suppliers with low order counts but high total order value, or high counts but low value, to evaluate strategic supplier importance.
+
+
+✅ Optional enhancement for text generation:
+
+Create a summary statement like:
+
+Supplier {VC_SUPPLIER_NAME} has {TOTAL_ORDERS} orders worth {TOTAL_VALUE}. {ORDERS_COMPLETED} orders completed ({% Completed}%), {ORDERS_CANCELLED} orders cancelled ({% Cancelled}%), {ORDERS_PENDING} pending ({% Pending}%). High cancellation value: {VALUE_CANCELLED}.
+
+
+This format can feed directly into a reporting dashboard, email summary, or prompt for an LLM to generate insights automatically.

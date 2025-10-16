@@ -1,0 +1,8 @@
+### Business Growth Analysis
+
+1.  **Overall Growth Analysis:** High-level summary of business growth over the entire period.
+2.  **Monthly KPI Analysis:** Key performance indicators tracked on a monthly basis.
+3.  **Quarterly KPI Analysis:** Key performance indicators tracked on a quarterly basis.
+4.  **Weekly KPI Analysis:** Key performance indicators tracked on a weekly basis.
+5.  **Product Analysis (Monthly, Weekly, Quarterly):** A breakdown of product performance over different timeframes.
+6.  **Other Parameters:** Other relevant growth metrics.

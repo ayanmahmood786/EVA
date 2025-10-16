@@ -1,0 +1,21 @@
+Each card will be be build indvidually 
+all the topics cards will be in 3 rows and in 2 columns only.
+
+only table will be in single column and table should only have a summarized table based on one these below topics
+
+
+Number of quanity delivered Items:
+    - for each warehouse with toal quanity and delivered quanity
+    - Impact 
+
+Total Revenue
+
+Main Warehouse Dominance
+
+Customer Category Impact
+
+Top Product Revenue
+
+Bottom Product Revenue
+
+Table 

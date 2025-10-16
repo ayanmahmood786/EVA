@@ -1,0 +1,246 @@
+import oracledb
+import pandas as pd
+from langchain_core.prompts import PromptTemplate
+import google.generativeai as genai
+import os
+import json
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import google.generativeai as genai
+import os
+import json
+from fastapi.middleware.cors import CORSMiddleware
+from io import BytesIO
+import pandas as pd
+# FastAPI initialization
+import logging
+from fastapi import FastAPI, HTTPException, Request ,UploadFile, Form,File
+from fastapi.responses import FileResponse
+load_dotenv()
+genai.configure(api_key='AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw')
+from langchain_google_genai import GoogleGenerativeAI
+
+api_key="AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw"
+
+
+model=GoogleGenerativeAI(model="gemini-2.0-flash",api_key=api_key,temperature=1)
+# llm = genai.GenerativeModel("gemini-2.0-flash",generation_config={"temperature":0.5})
+#Loggers
+logging.basicConfig(level=logging.INFO)
+logger=logging.getLogger(__name__)
+
+# df=None
+
+# # {
+# # sql_query="SELECT * FROM Purchase_AI where  \"Company Code\"='05' "
+# # #   "user": "makess",
+# # #   "password": "makess",
+# # #   "dsn": "192.168.5.68:1521/ghana"
+# # # //   "question":"No of orders made in year 2022"
+# # # }
+
+# # connection = cx_Oracle.connect(user="ebizai", password="ebizai", dsn="192.168.5.190:1521/ORCL")
+# # # Fetch data from the database and load into a pandas DataFrame
+# # df = pd.read_sql(sql_query, con=connection)
+# # logger.info(f"DataFrame Created succesfully {df.head(2)}")
+# app=FastAPI()
+
+
+
+# # Add CORS middleware
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  # Specify the allowed origins
+#     allow_credentials=True,
+#     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+#     allow_headers=["*"],  # Allow all headers
+# )
+
+
+
+# '''----------------------------------------------  Function   -----------------------------------------'''
+
+# # def data(sql_query,user,password,dsn):
+# #     connection = cx_Oracle.connect(user=user, password=password, dsn=dsn)
+# #     # Fetch data from the database and load into a pandas DataFrame
+# #     df = pd.read_sql(sql_query, con=connection)
+# #     return df
+
+def excel_table(question,df):
+    list1=[]
+    for i in df.columns:
+        list1.append(df[i].dtype)
+    prompt = """You are an expert in Python and Pandas. Generate Python code based on the user's question: {question}, using the given DataFrame `external_df`.
+
+### Guidelines:
+1. **DataFrame Details**:
+   - Column names: {df}
+   - Column datatypes: {datatype}
+   - Sample data: {sample}
+   - Null values for column: {null_values} 
+   - fill null values with empty string.
+   - Dont write Functions.
+2. The output must be a Pandas DataFrame named `output_df`. If no relevant columns match the question, set `output_df = None`.
+3. Use explicit imports for all necessary libraries (e.g., `import pandas as pd`) to prevent errors.
+4. Do not create a sample data or assume sample data, alter the DataFrame, or include any functionality beyond answering the question.
+5. Include concise comments in your code for clarity.
+
+### Key Points:
+- Use .lower for matching the strings becuase their might be chance that the data should consist of some upper case or captilaize type of strings.
+- Output only the Python code; no explanations, text, or examples.
+- If the question is unrelated to the DataFrame, return `None` for `output_df`.
+- No Need to write functions
+# Your code starts below:
+    """
+    prompt = PromptTemplate(template=prompt
+    , input_variables=["question","df","datatype","sample","null_values"])
+    prompt_formatted_str = prompt.format(
+        question=question,df=df.columns,datatype=list1,sample=df.sample(),null_values=df.isnull().sum()
+    )
+    prediction = model.invoke(prompt_formatted_str)
+    # prediction =prediction.text
+    prediction=prediction.replace("```python","")
+    prediction=prediction.replace("```","")
+    return prediction
+
+# def python_graph(dataframe):
+#     temp_df=pd.DataFrame(json.loads(dataframe["Dataframe"]))
+#     datatype=[]
+#     uni=[]
+#     for i in temp_df.columns:
+#         datatype.append(temp_df[i].dtype)
+#         uni.append(len(temp_df[i].unique()))
+#     prompt = """
+# You are a world-class Python graph generator specializing in creating visually appealing and insightful graphs using Matplotlib and Seaborn. 
+# Your task is to generate the most appropriate graph based on the data provided. 
+# plot for multiple columns if possible.
+# Graphs : 1. Pie 2. Bar 3. Line 4.[kde,scatter,violin]
+# Key guidelines:
+# 1. Focus only on four graph generation—no need to write functions or additional logic outside of plotting. like a dashboard 2 graphs in a row and 2 more in the next row
+# 2. Do not use any libraries other than Matplotlib and Seaborn.
+# 3. Do not generate or assume any sample data. The data is provided in a dataframe called `temp_df`.
+# 4. Use the dataframe `temp_df` directly without altering its data.
+# 5. Base your graph design on the following data characteristics:
+#    - Columns: {df}
+#    - Datatypes of columns: {datatype}
+#    - Sample data: {sample}
+#    - Shape of the dataframe: {shape}
+#    - No of unique values :{uni}
+# 6. Do not modify, generate, or assume any additional data.
+# 7. At the end use plt.tightlayout()
+# 8. Write only the Python code—avoid comments, explanations, or any extra details.
+
+
+# # Your code starts below:
+# """
+#     prompt=PromptTemplate(template=prompt,input_variables=["df","datatype","sample","shape","uni"])
+#     prompt_formatted=prompt.format(df=temp_df,datatype=datatype,sample=temp_df.sample(),shape=df.shape,uni=uni)
+#     response=model.invoke(prompt_formatted)
+#     response=response.replace("```python","").replace("```","").replace("plt.show()","")
+#     plt.clf()
+#     exec(response)
+#     plt.savefig("output.jpg")
+#     return "output.jpg"
+    
+    
+# def question_enhancer(question,e,data_columns):
+#     prompt="""
+#     Based on the given question :{question}
+#     You are getting an error: {e}
+#     Remeber if the output is coming to be None then there is problem in the question.
+#     if you can't generate any relevant question based on the error then write a new question based on the given column names:{data_columns}
+#     So enhance the question based on the error and provide a best question:
+#     No need to write the explanation just provide a question.
+#     Write some complex question.
+#     Enhance the given question or suggest a new question.
+
+#     Question:""
+
+#     """
+#     prompt=PromptTemplate(template=prompt,input_variables=["question","e","data_columns"])
+#     prompt_formatted=prompt.format(question=question,e=e,data_columns=data_columns)
+#     prediction=model.invoke(prompt_formatted)
+#     return prediction
+
+def relevant_table(question,df):
+    list1=[]
+    for i in df.columns:
+        list1.append(df[i].dtype)
+
+    prompt = """
+You are an expert in Python and Pandas. Generate Python code based on the user's question: {question}, using the given DataFrame `df`.
+
+### Guidelines:
+1. **DataFrame Details**:
+   - Column names: {df}
+   - Column datatypes: {datatype}
+   - Sample data: {sample}
+2. The output must be a Pandas DataFrame named `output_df`. If no relevant columns match the question, set `output_df = None`.
+3. Use explicit imports for all necessary libraries (e.g., `import pandas as pd`) to prevent errors.
+4. Do not create or assume sample data, alter the DataFrame, or include any functionality beyond answering the question.
+5. Include concise comments in your code for clarity.
+
+### Key Points:
+- Do not produce a sample data or dataframe
+- Avoid Recursion 
+- Output only the Python code; no explanations, text, or examples.
+- If the question is unrelated to the DataFrame, return `None` for `output_df`.
+- No Need to write functions
+# Your code starts below:
+"""
+
+    prompt = PromptTemplate(template=prompt
+    , input_variables=["question","df","datatype","sample"])
+    prompt_formatted_str = prompt.format(
+        question=question,df=df.columns,datatype=list1,sample=df.sample()
+    )
+    prediction = llm.generate_content(prompt_formatted_str)
+    prediction =prediction.text
+    prediction=prediction.replace("```python","")
+    prediction=prediction.replace("```","")
+    return prediction
+
+# def convert_datetime_columns_to_str(df):
+#     for col in df.columns:
+#         # If the column is of datetime type, handle possible overflow errors
+#         if df[col].dtype == "datetime64[ns]" or df[col].dtype == 'object':  # Include 'object' in case dates are strings
+#             try:
+#                 df[col] = pd.to_datetime(df[col], errors='coerce')  # Convert to datetime, invalid values become NaT
+#                 df[col] = df[col].astype(str)  # Convert datetime to string after handling invalid dates
+#             except Exception as e:
+#                 raise HTTPException(status_code=500, detail=f"Date conversion error: {str(e)}")
+#     return df
+
+
+'''-------------------------------------- API ---------------------------------'''
+
+
+# @app.post("/questions")
+# async def dataframe(query_request: QueryRequest):
+#     try:
+#         # Use the DataFrmae function to execute the SQL query and fetch data
+#         df = data(query_request.sql_query, query_request.user, query_request.password, query_request.dsn)
+#         question=query_request.question
+#         code=relevant_table(question,df)
+#         local_vars={"df":df,"output_df":None}
+#         exec(code,{},local_vars)
+#         output_df=local_vars.get("output_df")
+#         output_json = {"Dataframe":output_df.to_json(orient="records", date_format="iso")}  # 'records' makes it list of dictionaries
+#         return output_json
+#     except Exception as e:
+#         # Raise an HTTP exception with the error message
+#         raise HTTPException(status_code=400, detail=f"Error: {str(e)}")
+    
+
+# @app.post("/input")
+# async def creds(new_request:Creds):
+#     global df  # Access the global df
+#     try:
+#         # Fetch the DataFrame
+#         df = data(new_request.sql_query, new_request.user, new_request.password, new_request.dsn)
+#         return {"message": "DataFrame stored successfully"}
+#     except Exception as e:
+#         raise HTTPException(status_code=400, detail=f"Error: {str(e)}")
+
+

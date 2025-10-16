@@ -1,0 +1,29 @@
+Top Delayed Products (Backlog Severity)
+
+📌0.7 LTR MC VACUUM FLASK MC-FF5807: Pending Qty - 137,103, Sales Value - 61.36 million
+📌1 LTR MC VACUUM FLASK MC-FF5801: Pending Qty - 155,816, Sales Value - 2.9 million
+📌PLUS NAME PLATE 36 FOR LIFE STYLE: Pending Qty - 11,999, Sales Value - 49.6 million
+
+Widespread Delay Risk (Customer Impact)
+
+📌CARPET AC-N814: 14 Customers, Pending Qty - 269, Sales Value - 856,144
+📌PLUS NAME PLATE 24 FOR LIFE STYLE: 9 Customers, Pending Qty - 524, Sales Value - 525,583
+📌0.7 LTR MC VACUUM FLASK MC-FF5807: 8 Customers, Pending Qty - 137,103, Sales Value - 61.36 million
+
+Aging Analysis of Pending Orders
+
+📌 Over 60 days: Most products have significant delays, impacting customer satisfaction.
+📌0.7 LTR MC VACUUM FLASK MC-FF5807: 137,102.84 units delayed over 60 days.
+📌1 LTR MC VACUUM FLASK MC-FF5801: 155,814 units delayed over 60 days.
+
+High Financial Exposure (Value at Risk)
+
+📌PLUS NAME PLATE 36 FOR LIFE STYLE: Total Pending Value - 49.6 million, Avg Price - 3,220.17
+📌0.7 LTR MC VACUUM FLASK MC-FF5807: Total Pending Value - 61.36 million, Avg Price - 79.22
+📌1 LTR MC VACUUM FLASK MC-FF5801: Total Pending Value - 2.9 million, Avg Price - 383.65
+
+Item-wise Delay Trends
+
+📌PLUS NAME PLATE 24 FOR LIFE STYLE: Avg Delay - 324.6 days
+📌PREMIUM MOTOR SPIRIT(PMS): Avg Delay - 365 days
+📌INSTALLATION SERVICE: Avg. Delay - 343 days

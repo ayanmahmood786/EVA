@@ -1,0 +1,126 @@
+### Item-Wise Purchase Deep-Dive
+
+use two column structure.
+Write in detail
+
+Built cards for each of the topics given below in two column structure. two cards in one row
+
+1.  **Top Items:** Identify the most purchased items by value and volume.
+2.  **Purchase Frequency:** Analyze how often each key item is purchased (e.g., monthly, quarterly).
+3.  **Unit Price Trends:** Track the change in unit price over time to spot inflation or volatility.
+4.   **Actionnable Recommendations:**
+5.   **Important Considerations:**
+6.Price Trend Analysis
+
+* DOnt Talk about data accuracy or missing of data.
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards (mandatory).  
+2. Keep spacing consistent, align numbers to right.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+7. Use this type of figures in table 1,20,000 
+
+
+
+Output shoe be like this:
+📊 Comprehensive Procurement Insights Report
+1️⃣ Price Trend Analysis
+
+    Increasing Prices:
+
+    PMS (Petrol) → rising steadily ($7.6 → $10.0).
+
+    HP Victus Laptops → climbing ($1,086 → $2,587).
+
+    200W Charging Adapter → extreme spike ($667 → $23,998).
+
+AKAI Fridge → gradual rise ($1,641 → $2,100).
+    🔎 Implication: Cost pressures are mounting in energy and electronics, requiring long-term price-lock contracts.
+
+    Declining Prices:
+
+    Vacuum Flask ($60 → $6), Cushions ($12.7 → $0.15), T-Shirts ($0.33 → $0.004), Lubricants ($500 → $300), Name Plates ($1,125 → $500).
+    🔎 Implication: While savings are possible, drastic drops suggest quality compromise or supplier changes. Requires quality control checks.
+
+Stable Prices:
+
+    Furniture (Wardrobes, Chairs, Trusses), Baby Products, Pens, Samsung Laptops, Gas Oil, AGO.
+    🔎 Implication: These items are low procurement risk and well-suited for steady supplier contracts.
+
+    Volatile Prices:
+
+    Beverage Dispenser (wild swings: $27 → $853 → $22 → $27).
+
+    Charging Adapter & Flask (early months).
+    🔎 Implication: Procurement inefficiencies → potential spot buying or inconsistent suppliers.
+
+2️⃣ Purchase Frequency Insights (3 examples)
+
+High Frequency (3–5 monthly): Cushions, Dispensers, Charging Adapters, Shelf Brackets.
+
+⚠️ These should be locked under annual supply agreements to stabilize costs.
+
+Medium Frequency (1.5–2.5 monthly): Vacuum Flask, PMS, HP Victus, T-Shirts, Name Plates.
+
+⚠️ Shows demand fluctuation/seasonality → needs inventory planning.
+
+Low Frequency (1 monthly): Oils, Laptops, Baby Wash, Furniture, Pens.
+
+✅ Suited for bulk one-off procurement → easier to manage.
+
+3️⃣ High-Value Spend & Risk Hotspots
+
+Top Spend Items:
+
+Vacuum Flask (~$900M), PMS (~$274M), HP Victus (~$54M), Charging Adapter (~$6.7M).
+
+⚠️ These dominate procurement budgets → need tighter control, approval workflows, and budget forecasting.
+
+High-Value Outlier Purchases:
+
+Shelf Brackets, Cushions, Beverage Dispensers.
+
+⚠️ Sudden large orders raise red flags of over-ordering or poor demand planning.
+
+4️⃣ Procurement Efficiency & Risks
+
+Procurement Inefficiencies:
+
+Charging Adapter, Beverage Dispenser, Cushions → unstable prices + high frequency → risk of overpayment.
+
+Efficient/Low Risk:
+
+Furniture, Baby Products, Pens, Oils → stable prices, predictable demand.
+
+Supplier Risks:
+
+Flasks, T-Shirts, Cushions show declining prices → likely supplier competition, but could also mean quality downgrade.
+
+5️⃣ Opportunities for Optimization
+
+Bulk Contracting & Volume Discounts
+
+For high-frequency & high-spend items (Flasks, PMS, HP Victus).
+
+Supplier Audits & Price Benchmarking
+
+Especially for Adapters & Beverage Dispensers (extreme volatility).
+
+Seasonal Planning
+
+Stockpile PMS, T-Shirts, Dispensers during low demand months to avoid peak-price purchases.
+
+Quality Assurance
+
+Declining items (Cushions, T-Shirts, Flasks) need product testing to ensure cost cuts aren’t at the expense of quality.
+
+6️⃣ Strategic Insights (Summary)
+
+Top Risk Items: Charging Adapter, Beverage Dispenser, Cushions → urgent supplier review needed.
+
+Stable Low-Risk Items: Oils, Furniture, Baby Products, Pens → predictable and cost-stable.
+
+High Budget Impact: Flasks, PMS, HP Victus → dominate spending → require budget alignment and procurement governance.
+
+Optimization Levers: Long-term supplier agreements, price benchmarking, quality checks, and seasonal inventory planning.

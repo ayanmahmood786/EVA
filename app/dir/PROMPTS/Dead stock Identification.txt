@@ -1,0 +1,98 @@
+Analyze the dead stock inventory data and provide comprehensive insights with actionable recommendations. Structure the analysis with clear sections and use visual emojis for emphasis:
+
+
+
+**ANALYSIS REQUIREMENTS:**
+
+Provide each of the below points into card form.
+use two column strcuture and provide two cards in 2 columns.
+
+1. **DEAD STOCK OVERVIEW** 🏭
+   - Total number of products with dead stock
+   - Total dead stock quantity and value
+   - Overall aging breakdown (90-120 days vs 120+ days)
+
+2. **TOP 5 DEAD STOCK PRODUCTS BY VALUE** 🏆
+   - Identify top 5 products by dead stock value
+   - Show value, quantity, and percentage of total
+   - Analyze aging patterns (90-120 vs 120+ days)
+   - Note primary warehouse locations
+
+3. **WAREHOUSE ANALYSIS** 📊
+   - Analyze dead stock distribution across warehouses
+   - Identify highest and lowest risk warehouses
+   - Show value and quantity percentages per warehouse
+   - Highlight concentration risks
+
+4. **CRITICAL CONCERNS** ⚠️
+   - Extreme aging patterns (120+ days dominance)
+   - Concentration risks (top products/warehouses)
+   - Product category vulnerabilities
+   - Financial impact assessment
+
+5. **IMMEDIATE ACTION REQUIRED** 🚨
+   - Priority 1: Most critical products/warehouses
+   - Priority 2: Inventory policy review needs
+   - Priority 3: Warehouse optimization opportunities
+   - Timeline recommendations
+
+6. **POSITIVE NOTES** ✅
+   - Manageable aspects of the situation
+   - Areas showing good inventory management
+   - Quick-win opportunities
+
+7. **STRATEGIC RECOMMENDATIONS** 🎯
+   - Liquidation strategies for top items
+   - Inventory write-down considerations
+   - Enhanced monitoring protocols
+   - Cross-warehouse optimization
+   - Supplier negotiation opportunities
+
+**SPECIFIC METRICS TO INCLUDE:**
+- Percentage calculations for value/quantity contributions
+- Aging percentages (90-120 days vs 120+ days)
+- Warehouse concentration percentages
+- Top product impact on overall dead stock
+- Financial magnitude with currency symbols (₵)
+
+**FORMATTING REQUIREMENTS:**
+- Use clear section headers with relevant emojis
+- Present top 5 products in ranked order
+- Include specific values and percentages
+- Use bullet points for easy readability
+- Highlight critical issues with warning indicators
+- Provide actionable recommendations with priority levels
+- End with bottom-line summary
+
+**OUTPUT STYLE:** Professional inventory analysis with urgent tone for critical issues. Focus on data-driven insights and immediate actionable steps. Use clear, concise language with emphasis on financial impact and risk mitigation.
+For the warehouse analysis section, specifically add:
+
+For WAREHOUSE ANALYSIS, include:
+- **Risk Level Assessment** for each warehouse:
+  🚨 CRITICAL (>50% of total dead stock value)
+  ⚠️ HIGH (10-50% of total value)
+  📋 MODERATE (1-10% of total value)
+  ✅ LOW (<1% of total value)
+
+- **Warehouse Concentration** analysis:
+  * Main Warehouse dominance percentage
+  * Secondary warehouse contributions
+  * Geographic distribution patterns
+
+- **Product-Warehouse Relationships**:
+  * Key products in each warehouse
+  * Aging patterns by location
+  * Transfer opportunities between warehouses
+
+
+
+Example of how to structure the product analysis:
+
+### **1. 2PC T-SHIRT SET 50-55-60CM B-4883** ⚠️
+- **Value**: 80.7 billion (83.9% of total dead stock value)
+- **Quantity**: 79 million units (21.4% of total quantity)
+- **Age**: 99.8% over 120+ days old
+- **Warehouse**: Mainly in Main Warehouse (₵66.8 billion)
+
+
+

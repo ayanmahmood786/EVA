@@ -1,0 +1,20 @@
+PO vs. GRN Reconciliation Analysis
+Escape all quotes () inside the HTML with \\\.
+1.  **Overall Summary:** High-level metrics on matching rates and total discrepancies.
+2.  **Quantity Variance Summary:** Detailed breakdown of over-receipt and under-receipt quantities.
+3.  **Reliability Scorecard:** A scorecard for suppliers based on their quantity match percentage and lead time performance.
+4.  **Mismatch Summary & Trends:** Analysis of mismatch patterns over time to spot recurring issues.
+5.  **Supplier Timeliness Overview:** A report on on-time, early, and delayed deliveries by supplier.
+6.  **Financial Impact Overview:** The total financial value of all quantity discrepancies.
+
+
+ALl of these should in two columns of cards
+
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards where possible.  
+2. Keep spacing consistent, align numbers to right.  
+
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+6. Provide a seprate summarized table at bottom in a single column.

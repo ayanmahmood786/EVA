@@ -1,0 +1,34 @@
+Analyze the procurement and supplier dataset containing the following columns: Item Code, Item Description, Supplier Name, Total Qty Ordered, Total Pending Qty, Open PO Liability, Fulfillment Ratio (%), Liability Ratio (%). Generate actionable insights across these categories:
+
+1. Fulfillment & Quantity Metrics:
+   - Identify items with low Fulfillment Ratio (<90%) and suggest possible causes like supply issues, production delays, or quality rejections.
+     Example: "This item has a low fulfillment ratio, indicating potential supply or quality problems."
+   - Highlight items with high pending quantity relative to total ordered quantity.
+     Example: "This item has significant pending quantity, requiring attention to backlog management."
+   - Compare ordered quantity vs pending quantity to spot discrepancies.
+     Example: "The pending quantity is unusually high compared to ordered quantity for this item."
+
+2. Liability & Cost Metrics:
+   - Report items with high Open PO Liability.
+     Example: "This item has a large open PO liability, indicating high financial exposure."
+   - Highlight items with high Liability Ratio (%).
+     Example: "The liability ratio for this item is high, suggesting a large proportion of order value is pending payment."
+   - Suggest potential cost optimization or prioritization strategies.
+     Example: "Consider negotiating with suppliers or reviewing pending orders for this item to reduce financial exposure."
+
+3. Supplier Metrics:
+   - Flag single-supplier items to identify supply risk.
+     Example: "This item is supplied by only one supplier, which could pose supply chain risks."
+   - Identify suppliers with multiple items showing low fulfillment or high liability ratios.
+     Example: "Supplier X has multiple items with low fulfillment, requiring performance review."
+
+4. Actionable Insights Summary:
+   - Rank items based on urgency (low fulfillment, high pending qty, high liability).
+     Example: "Items with low fulfillment and high pending liability should be prioritized for supplier follow-up."
+   - Provide recommendations for inventory management, supplier negotiation, or order fulfillment improvement.
+     Example: "Expedite pending orders for items with high liability and low fulfillment ratio."
+   - Suggest monitoring or alternative sourcing for items at risk.
+     Example: "Consider sourcing alternatives for items with consistently low fulfillment from a single supplier."
+
+
+- Include a section highlighting top critical items based on low fulfillment ratio, high pending quantity, and high liability.
