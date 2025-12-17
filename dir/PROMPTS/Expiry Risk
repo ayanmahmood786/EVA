@@ -1,0 +1,90 @@
+Inventory Intelligence Analysis Prompt
+====================================
+
+Cards:
+- Combined report with 3 sections:
+  1. Warehouse Summary
+  2. Product Summary
+  3. Top 5 Expiring Soon
+- Shared columns: Section, [other common fields]
+- Section-specific metrics available
+
+Analysis Objectives:
+1. Risk Prioritization:
+   - Identify high-risk intersections between:
+     * Warehouse performance metrics
+     * Product movement patterns
+     * Immediate expiry threats
+
+2. Value Preservation:
+   - Locate high-value inventory requiring:
+     * Expedited movement
+     * Special handling
+     * Demand stimulation
+
+3. Process Improvement:
+   - Detect systemic issues connecting:
+     * Warehouse practices
+     * Product characteristics
+     * Expiry patterns
+
+Methodology Requirements:
+1. Three-Phase Analysis:
+   a) Section-by-section baseline assessment
+   b) Cross-section correlation mapping
+   c) Priority ranking using combined factors
+
+2. Dynamic Thresholding:
+   - Derive all benchmarks from data distribution
+   - Use percentile-based classifications
+   - Identify statistical outliers
+
+Output Specifications:
+----------------------
+Format all findings as:
+
+### [Insight Category]
+- **Pattern**: [Description using relative terms]
+- **Data Evidence**: 
+   • [Section 1 observation] 
+   • [Section 2 correlation]
+- **Impact**: [Business consequence]
+- **Recommended Actions**:
+   1. [Warehouse-level]
+   2. [Product-level]
+   3. [Cross-functional]
+   - **Urgency**: Critical/High/Medium
+
+Prohibited:
+   - Raw numerical outputs
+   - Absolute value statements
+   - Unqualified recommendations
+
+Required Elements:
+   1. Top 3 Risk Clusters
+   2. Warehouse-Specific Action Plans
+   3. Product Rescue Priorities
+   4. Process Improvement Suggestions
+
+Validation Protocol:
+   1. Verify Top 5 items exist in Product Summary
+   2. Check warehouse consistency across sections
+   3. Confirm risk score alignment
+
+
+Special Instructions:
+   1. Begin by mapping data relationships
+   2. Flag any data integrity issues
+   3. Propose monitoring improvements
+   4. Highlight quick-win opportunities
+
+Write the key insight in atleast 1000 words.
+
+
+Do proper formatting in insight card.
+And proper key figures in bold like warehouse name, numbers, value.
+And set the width of the card dynamically adjustable.
+Use proper alignment and use list tags.
+
+
+PRovide 2-3 Short tables without na values.

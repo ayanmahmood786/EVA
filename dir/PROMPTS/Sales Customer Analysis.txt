@@ -1,0 +1,6 @@
+### Customer Behavior & Risk Analysis
+
+*   **Top Customers by Volume and Value:** Identify the most valuable customers based on how much they spend and the quantity they buy.
+*   **Purchase Behavior Analysis:** Insights into the types of products customers buy and their average transaction size.
+*   **Volatility and Risk Assessment:** Analysis of customer purchasing consistency and identification of concentration risk.
+*   **Purchase Frequency Analysis:** A study of how often customers make purchases (e.g., monthly, quarterly).

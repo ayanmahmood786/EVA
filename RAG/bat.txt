@@ -1,0 +1,1 @@
+uvicorn RAG_API:app --host 192.168.5.136 --port 8100 --reload

@@ -1,0 +1,10 @@
+### Open PO Financial Exposure Report
+
+
+
+Provide these below cards in s eprate column .
+*   **Overall Financial Exposure:** The total monetary value of all goods ordered but not yet received.
+*   **Key Suppliers with High Liability:** A list of suppliers who account for the largest portion of the open PO liability.
+*   **Items by Open PO Liability:** A breakdown of open liability by individual items.
+*   **Fulfillment and Liability Ratios:** Analysis of the percentage of orders fulfilled versus the value still outstanding.
+*   **Other:** Additional related financial metrics.

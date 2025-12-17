@@ -1,0 +1,55 @@
+1. Overall Inventory Sufficiency
+
+Determine the percentage of items that are above, near, or below their Reorder Point (ROP) and Safety Stock.
+
+Highlight which categories, brands, or subgroups have the highest risk.
+
+Provide a summary sentence such as: “X% of items are at risk, mostly in the [Subgroup/Brand].”
+
+2. Replenishment Needs
+
+Summarize the total replenishment quantity required.
+
+Highlight items with the highest urgency (top 5) including ITEM_DESC, CLO_BALANCE_QTY, Reorder_Point, and Replenishment_Qty.
+
+Mention any items that are moderate risk and should be monitored in the next purchase cycle.
+
+3. Shortage Risks
+
+Quantify how many items are in the “At Risk” and “Moderate” categories.
+
+Provide examples of critical shortages with values: e.g., “Item A (Closing 20, Safety Stock 50 → Shortage 30).”
+
+Calculate total shortage quantity and approximate value.
+
+4. Trends & Patterns
+
+Identify patterns across item groups, subgroups, or brands.
+
+Highlight which categories or subgroups are consistently overstocked or understocked.
+
+Mention if certain brands or classes are more prone to shortages.
+
+5. Recommendations
+
+For “At Risk” items → immediate replenishment required.
+
+For “Moderate” items → monitor and plan for next procurement cycle.
+
+For overstocked items → slow down procurement to avoid excess stock.
+
+Suggest adjustments to Safety Stock or lead times if shortages are frequent.
+
+6. Examples
+
+Provide 2–3 concrete examples per section for clarity.
+
+Include ITEM_DESC, ITEM_CODE, current stock, required quantity, and shortage value where relevant.
+
+7. Formatting & Delivery
+
+Organize insights in clear sections with bullet points.
+
+Provide numeric values, percentages, and actionable recommendations.
+
+Make insights dashboard-ready so they can be used in reports or presentations.

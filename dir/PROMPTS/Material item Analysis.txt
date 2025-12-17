@@ -1,0 +1,44 @@
+Analyze the following item-level procurement and inventory dataset and generate actionable insights across multiple dimensions. For each item, consider the columns: Item Code, Item Description, Total Qty Ordered, Total Qty Accepted, Fulfillment Rate (%), Total Pending Qty, Avg. Price, Avg. Landed Cost per Unit, Number of Unique Suppliers, % Imported Orders. Provide insights under the following categories and flag issues or opportunities where relevant:
+
+1. Quantity & Fulfillment Metrics:
+   - Identify items with low fulfillment rates (<90%) and suggest possible causes (supply delays, quality issues).
+     Example: "Item 2PC T-SHIRT SET 50-55-60CM B-4883 (Code: 0004344) has a fulfillment rate of 88.77%, indicating potential supply or quality issues."
+   - Highlight items with significant pending quantities.
+     Example: "Item V BRAKE (Code: 0024685) has 9,001,002 units pending, requiring attention to backlog management."
+   - Compare Total Qty Ordered vs Total Qty Accepted to detect discrepancies.
+     Example: "Item 2PC FOOD WARMER 28003+21005 (Code: 0054450) had 60,22,152 units ordered but only 20,16,152 accepted."
+
+2. Pricing & Cost Metrics:
+   - Report items with unusually high or low Avg. Price.
+     Example: "Item 16PCS DINNER SET W-01 (Code: 0007454) has an average price of 1,381.06, significantly higher than most items."
+   - Highlight items with high Avg. Landed Cost per Unit, especially imported items.
+     Example: "Item 2PC T-SHIRT SET 50-55-60CM B-4883 has an average landed cost of 6,150.99 per unit, indicating high procurement cost."
+   - Detect trends in cost variations across items.
+     Example: "Imported items like GAS OIL (Code: 0063890) show a landed cost of 9.66 per unit versus a standard price of 0.60, reflecting shipping and import duties."
+
+3. Delivery & Delay Metrics:
+   - Flag items with consistent delivery delays.
+     Example: "Item 1 LTR MC VACUUM FLASK MC-FF5801 (Code: 0058899) experiences repeated delivery delays, impacting stock availability."
+   - Identify items with a high percentage of delayed orders.
+     Example: "Item 2PC FOOD WARMER 28003+21005 has 36.36% of its orders delayed."
+   - Suggest which suppliers or items may require improved logistics planning.
+     Example: "Single-supplier items with high delays, like DIESEL (Code: 0007204), need review of supplier performance or alternate sourcing."
+
+4. Supplier & Sourcing Metrics:
+   - Highlight single-source items to identify supply risks.
+     Example: "Item GAS OIL (Code: 0063890) is supplied by only 1 supplier, posing a potential risk in supply disruption."
+   - Flag items with high import dependency (% Imported Orders > 50%) for customs or supply chain risk.
+     Example: "Item GAS OIL is 100% imported, indicating a high dependency on international supply chains."
+   - Identify items with a high number of unique suppliers for diversification analysis.
+     Example: "Item 2PC 350G CUSHION W/COVER 3-34435-34436-5 (Code: 0031814) has 9 suppliers, showing diversified sourcing."
+
+5. Overall Actionable Insights:
+   - Rank items by urgency of attention (e.g., very low fulfillment, high pending quantity, high cost).
+     Example: "Top critical item: 2PC FOOD WARMER 28003+21005 (Code: 0054450) – fulfillment rate 33.48%, pending 6,000 units, high landed cost."
+   - Provide recommendations for supply chain improvement, procurement strategy, or inventory management.
+     Example: "Consider negotiating faster deliveries or alternate suppliers for delayed and low-fulfillment items."
+   - Suggest potential items for cost optimization or supplier renegotiation.
+     Example: "Items with extremely high landed costs, such as 2PC T-SHIRT SET 50-55-60CM B-4883, could be targeted for supplier renegotiation."
+
+
+- Also provide a separate section highlighting top 5 critical items based on low fulfillment, high pending quantity, and high landed cost.

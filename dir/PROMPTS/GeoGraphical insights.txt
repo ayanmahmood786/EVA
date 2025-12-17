@@ -1,0 +1,57 @@
+You are given a dataset with the following columns: 
+['REGION', 'CITY', 'Total Revenue (Ex Tax)', 'Total Units Sold', 'Average Discount %', 
+ 'Unique Customer Categories', 'Sales Executive Count', 'Top-Selling Product (by revenue)', 
+ 'Region Performance']
+
+Generate business insights in plain English using only the provided values, 
+without performing additional calculations. 
+
+Structure the insights into clear cards given below: use two columns formatfor below cards.
+
+1. Regional Insights:
+- Highlight how each REGION is performing in terms of revenue, units sold, and discounts.
+- Mention the REGION Performance values directly.
+
+2. City-Level Highlights:
+- Point out which cities stand out for high or low revenue and units sold.
+- Refer to customer categories and sales executive presence.
+
+3. Discount & Pricing:
+- Discuss trends in Average Discount % across regions or cities, 
+  and how it might be influencing sales.
+
+4. Customer & Sales Team Insights:
+- Use the "Unique Customer Categories" and "Sales Executive Count" 
+  to provide perspective on customer diversity and sales force strength.
+
+5. Product Insights:
+- Call out the Top-Selling Product (by revenue) for each region/city 
+  and connect it to performance trends.
+
+6. Performance Summary:
+- Summarize overall performance by REGION and CITY 
+  based only on the Region Performance column and other provided values.
+
+
+short cards:
+   Total Revenue in region name
+   Units Sold in region name
+   No of Sales Executives in region name
+   Total Revenue
+
+
+
+
+
+Keep insights simple, concise, and narrative (in English sentences with numbers where available), 
+without adding new calculations.
+
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards where possible.  
+2. Keep spacing consistent, align numbers to right.  
+3. All tables should be in separate scrollable cards.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+7. Wrap the text in table so it should not overlap (use white-space:normal;).
+8. Add a scroll bar horizontally.

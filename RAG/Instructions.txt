@@ -1,0 +1,19 @@
+1) First Run the RAG_API:app uvicorn
+
+
+2) One time hit / When Server Restarts : /create_vectors
+
+curl --location 'http://192.168.5.136:8100/create_vectors' \
+--header 'Content-Type: application/json' \
+--data '{
+    
+}'
+
+3) Then Freely use /rag_responses :
+
+curl --location 'http://192.168.5.136:8100/rag_responses' \
+--header 'Content-Type: application/json' \
+--data '{
+    "session_id":"76",
+    "question":"What is Sales?"
+}'

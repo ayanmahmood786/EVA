@@ -1,0 +1,91 @@
+ 📌 Sales Data Insight Prompt Template
+
+
+
+"I have the following dataset with columns [Month, Total Sales, % Change, Best Customer, Best Customer Sales, Best Salesperson, Best Salesperson Sales, Best Zone, Best Zone Sales]. Please analyze it and provide structured insights in the following format:
+Built cards for each of the topics given below in two column structure.
+
+
+
+2. **Sales Volatility** – identify if sales are stable, growing, declining, or highly volatile.  
+3. **Top Performing Periods** – highlight peak sales months and what drove them (customers, zones, salespeople).  
+4. **Decline & Recovery Trends** – describe any sharp drops or rebounds.  
+5. **Best Customers** – who contributed the most sales, whether they are repeat or one-off clients.  
+6. **Salesperson Performance** – compare contributions of each salesperson and note any dependencies.  
+7. **Best Zones** – analyze which geographical zones contribute most.  
+8. **Strategic Insights** – provide high-level business takeaways and risks (e.g., reliance on one client, geographic imbalance, sustainability of growth).  
+
+
+
+**Output Formatting Requirements:**  
+1. **Two-column layout** for cards (mandatory).  
+2. Keep spacing consistent, align numbers to right.  
+3. All tables should be in separate scrollable cards.  
+4. Use relevant emojis for each card title for quick scanning.  
+5. Maintain compact font size for easy viewing on dashboards.  
+6. Provide a seprate summarized table at bottom in a single column for monthwise sales.
+7. Use this type of figures in table 1,20,000 
+sample Output:
+
+
+
+==================================================
+SALES PERFORMANCE ANALYSIS REPORT
+
+==================================================
+
+1. OVERVIEW
+------------
+The dataset covers 12 months of sales performance, tracking total sales, month-over-month percentage change, and identifying the top-performing customer, salesperson, and zone for each period.
+
+2. SALES VOLATILITY
+-------------------
+Sales performance is extremely volatile, characterized by dramatic peaks and troughs.
+    - The highest sales month reached X trillion.
+    - This peak was immediately followed by a complete collapse to X (-100%) the next month.
+    - Subsequent months show unstable partial rebounds (e.g., X, +X%) followed by further declines (e.g., to X, -X%).
+    - The final months indicate a potential stabilization, with sales leveling off between X and X.
+
+3. TOP PERFORMING PERIODS
+--------------------------
+    - **Month X (Record High):** X trillion in sales. Primarily driven by **Customer X (X trillion)** and **Zone X (X trillion)**.
+    - **Month X (Strong Performance):** X million in sales. Mainly contributed by **Customer X (X million)**.
+    - **Month X (Recovery Period):** X million in sales. Led by **Customer X (X million)**.
+
+4. DECLINE & RECOVERY TRENDS
+-----------------------------
+    - A sharp -100% decline immediately followed the peak in Month X.
+    - This was followed by a modest recovery the next month (X, +X%).
+    - A later surge to X (+X%) was again followed by a sharp fall to X (-X%).
+    - The trend concluded with a period of stabilization in the final months between X and X.
+
+5. BEST CUSTOMERS ANALYSIS
+---------------------------
+    - **Customer X:** The single largest contributor with a X trillion order.
+    - **Customer X:** A strong seasonal performer, generating X million.
+    - **Customer X:** Key to boosting early 2025 performance with X million.
+
+6. SALESPERSON PERFORMANCE
+---------------------------
+    **Salesperson X** is the dominant force, creating a heavy dependency:
+    - Achieved X trillion in Month X.
+    - Secured X million in Month X.
+    - Remained the top seller even in low-performance months (e.g., X thousand in Month X).
+    **Other Performers:**
+    - **Salesperson X:** Top in Month X (X million) and Month X (X thousand).
+    - **Salesperson X:** Only appeared as top performer in Month X (X million) and Month X (X thousand).
+
+7. BEST ZONES ANALYSIS
+----------------------
+    - **Zone X:** The clear leader, responsible for the biggest months (X trillion, X million, X million).
+    - **Zone X:** Provided steady but smaller contributions (X million, X thousand, X million).
+    - **Zone X:** Only appeared once in the report (X thousand).
+    - **Zone X:** Appeared in a single mid-year month (X million).
+
+8. STRATEGIC INSIGHTS & RISKS
+------------------------------
+    - **Revenue Concentration:** Revenue is dominated by sporadic mega-orders (e.g., X trillion), making income unpredictable.
+    - **Customer Retention:** Top customers are typically one-off contributors, indicating weak long-term retention.
+    - **Salesforce Imbalance:** Extreme dependency on a single salesperson (**Salesperson X**) poses a significant business risk.
+    - **Geographic Imbalance:** Revenue is heavily concentrated in **Zone X**, with other zones being severely underrepresented.
+    - **Key Vulnerability:** The business model is highly vulnerable to the loss of either a mega-client or the top salesperson.

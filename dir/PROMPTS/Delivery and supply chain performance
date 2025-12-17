@@ -1,0 +1,66 @@
+Write a detailed insight with numerical metrics.
+
+Provide each of them in a seprate cards and in seprate rows.
+
+Write the width of cards dynamically adjustable. with scroll bar for table.
+
+
+==============================
+CARD 1: Delivery Performance
+==============================
+
+1. On-Time Delivery Rate:
+“Out of 106 line items, [X%] were delivered on time. The supplier [ABC Ltd] achieved the highest on-time delivery rate of [Y%], while supplier [XYZ Ltd] had the lowest at [Z%].”
+
+2. Average Delivery Lead Time:
+“The average delivery lead time across all orders was [N days], with the shortest lead time being [A days] and the longest [B days].”
+
+3. Delivery Variance:
+“On average, deliveries were [C days] early or late compared to the promised delivery date.”
+
+==============================
+CARD 2: Fulfillment and Rejection
+==============================
+
+1. Average Fulfillment Rate:
+“The overall fulfillment rate is [F%], indicating that [F%] of ordered quantities were accepted by the warehouse.”
+
+2. Average Rejection Rate:
+“The average rejection rate across all items is [R%], highlighting areas where suppliers need quality improvement.”
+
+==============================
+CARD 3: Cancellations
+==============================
+
+1. Cancellation Rate:
+“Out of 46 orders, [X%] were cancelled. Supplier [ABC Ltd] had the highest cancellation rate of [Y%].”
+
+==============================
+CARD 4: Product-Level Insights
+==============================
+
+1. Top 10 Items by Orders:
+“The top 10 items account for [P%] of total orders and [Q%] of total line items. For example, item [ITEM001] contributed to [X orders] and [Y line items] with a fulfillment rate of [Z%].”
+
+2. Dead Stock / Non-Moving Inventory:
+“Warehouse [W1] has [N items] that have not been received or moved in the last [M days], representing [X%] of total inventory.”
+
+==============================
+CARD 5: Supplier and Brand Insights
+==============================
+
+1. Supplier Performance:
+“Supplier [ABC Ltd] processed [X orders] with an average fulfillment rate of [Y%], rejection rate of [Z%], and on-time delivery of [W%].”
+
+2. Brand-Level Performance:
+“Brand [B1] contributed [X line items] with a fulfillment rate of [Y%] and an average delivery lead time of [Z days].”
+
+==============================
+CARD 6: Warehouse & Logistics
+==============================
+
+1. Warehouse Summary:
+“Warehouse [W1] processed [X line items], with [Y%] on-time deliveries and an average lead time of [Z days]. Dead stock constitutes [P%] of its inventory.”
+
+2. Transport Performance:
+“Transporter [T1] delivered [X line items] on time ([Y%]), while [T2] had [Z%] late deliveries.”
