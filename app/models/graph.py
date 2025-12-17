@@ -1,15 +1,9 @@
 from langchain.prompts import PromptTemplate
-<<<<<<< HEAD
-
-
-async def graph(df,llm):
-=======
 from core.function import append_to_excel
 from core.utils import get_openai_callback
 
 
 async def graph(df,llm_chat):
->>>>>>> ayan2
     list1 = [df[i].dtype for i in df.columns]
     prompt_template = """
 
@@ -83,12 +77,6 @@ Instructions
         "datatype":list1,
         "sample":df.head().to_json(),
     }
-<<<<<<< HEAD
-
-    chain = prompt | llm
-    generated_code = (await chain.ainvoke(prompt_str))
-    return generated_code
-=======
     prompt_formatted_str = prompt.format(        df=df.columns.tolist(),
         datatype=list1,
         sample=df.head().to_json(),)
@@ -100,4 +88,3 @@ Instructions
 
     return result.content
     
->>>>>>> ayan2

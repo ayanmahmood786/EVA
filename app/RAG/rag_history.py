@@ -1,27 +1,15 @@
 import oracledb
 # import oracledb
-<<<<<<< HEAD
-import api
-=======
 from core.log import logger
->>>>>>> ayan2
 
 
 def create_connection():
     try:
-<<<<<<< HEAD
-        conn = oracledb.connect("ebizai/ebizai@localhost:1575/orcl")
-        api.logger.info("Connection Establised Succesfully")
-        return conn
-    except oracledb.Error as e:
-        api.logger.error(f"Error connecting to database: {e}")
-=======
         conn = oracledb.connect("ebizai/EBIZAI@172.16.1.191:1530/orcl")
         logger.info("Connection Establised Succesfully")
         return conn
     except oracledb.Error as e:
         logger.error(f"Error connecting to database: {e}")
->>>>>>> ayan2
         return None
 
 def history(module,question,session_id,answer,token,time,user_id,date):
@@ -44,11 +32,7 @@ def history(module,question,session_id,answer,token,time,user_id,date):
         try:
             cursor.execute(insert_query, data)
             connection.commit()
-<<<<<<< HEAD
-            api.logger.info(f"Data Inserted Succesfully:{data}")
-=======
             logger.info(f"Data Inserted Succesfully:{data}")
->>>>>>> ayan2
         except oracledb.DatabaseError as e:
             error, = e.args
             print("Error code:", error.code)

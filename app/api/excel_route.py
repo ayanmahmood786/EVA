@@ -17,11 +17,7 @@ async def excel_qa(file:UploadFile=File(...),question:str = Form(...)):
         content= await file.read()
         external_df=pd.read_excel(BytesIO(content))
         code=excel_table(question,external_df)
-<<<<<<< HEAD
-        logger.info(f"\n Code:{code}\n")
-=======
         # logger.info(f"\n Code:{code}\n")
->>>>>>> ayan2
         local_vars={"external_df":external_df,"output_df":None}
         exec(code,{},local_vars)
         output_df=local_vars.get("output_df")

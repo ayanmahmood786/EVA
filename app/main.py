@@ -1,35 +1,18 @@
-<<<<<<< HEAD
-from fastapi import FastAPI
-=======
 from fastapi import FastAPI,WebSocket
 from fastapi.responses import FileResponse
->>>>>>> ayan2
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from api import (apex_report_route,autoprompt_route,email,excel_route,flexi_report,flexisuggestion_route,getbiinsight_route,graphroute,pdfroute,rag_routes,voicefilter_route)
 import os
 from core.config import GOOGLE_API_KEY
-<<<<<<< HEAD
-
-=======
 from core.function import clean_old_logs
 import asyncio
 from contextlib import asynccontextmanager
->>>>>>> ayan2
 
 os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
 
 
 
-<<<<<<< HEAD
-
-
-
-app = FastAPI(title="EVA AI Backend")
-app.add_middleware(GZipMiddleware)
-
-# ✅ CORS
-=======
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("🚀 App starting up... running log cleanup")
@@ -44,7 +27,6 @@ app.add_middleware(GZipMiddleware)
 
 
 
->>>>>>> ayan2
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -69,8 +51,6 @@ app.include_router(voicefilter_route.router, prefix="/api", tags=["Voice Filter"
 @app.get("/health")
 async def health_check():
     return {"status": "Service is up"}
-<<<<<<< HEAD
-=======
 
 
 
@@ -148,4 +128,3 @@ async def download_excel():
         filename="llm_results.xlsx",
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
->>>>>>> ayan2

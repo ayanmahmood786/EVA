@@ -1,8 +1,6 @@
 import re
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
-<<<<<<< HEAD
-=======
 from core.config import LOG_PATH as LOG_FILE
 from datetime import datetime, timedelta
 from core.utils import * 
@@ -10,7 +8,6 @@ from core.log import logger
 import random
 
 
->>>>>>> ayan2
 
 executor = ThreadPoolExecutor(max_workers=50)
 
@@ -21,9 +18,6 @@ def clean_response(result):
     result=result.replace("##","")
     return result
 
-<<<<<<< HEAD
-
-=======
 _excel_lock = asyncio.Lock()
 
 async def append_to_excel(
@@ -73,7 +67,6 @@ async def append_to_excel(
 
         loop = asyncio.get_running_loop()
         await loop.run_in_executor(None, _write_row)
->>>>>>> ayan2
 
 def run_in_thread(func, *args):
     """Helper to run sync code in threadpool"""
@@ -84,8 +77,6 @@ def format_answer(answer):
     answer=answer.replace("**","\\b")
     answer = re.sub(r'\\b(.*?)\\b', r'<strong>\1</strong>', answer)
     return answer
-<<<<<<< HEAD
-=======
 
 
 def clean_old_logs():
@@ -374,4 +365,3 @@ async def get_chat_name(chat_id, report_name, user_name):
     connection.close()
 
     return row[0] if row else None
->>>>>>> ayan2

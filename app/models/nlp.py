@@ -17,22 +17,11 @@ import pandas as pd
 import logging
 from fastapi import FastAPI, HTTPException, Request ,UploadFile, Form,File
 from fastapi.responses import FileResponse
-<<<<<<< HEAD
-load_dotenv()
-genai.configure(api_key='AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw')
-from langchain_google_genai import GoogleGenerativeAI
-
-api_key="AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw"
-
-
-model=GoogleGenerativeAI(model="gemini-2.0-flash",api_key=api_key,temperature=1)
-=======
 from langchain_google_genai import ChatGoogleGenerativeAI
 from core.function import append_to_excel
 
 
 model=ChatGoogleGenerativeAI(model="gemini-2.0-flash",temperature=1)
->>>>>>> ayan2
 # llm = genai.GenerativeModel("gemini-2.0-flash",generation_config={"temperature":0.5})
 #Loggers
 logging.basicConfig(level=logging.INFO)
@@ -76,43 +65,6 @@ logger=logging.getLogger(__name__)
 # #     return df
 
 def excel_table(question,df):
-<<<<<<< HEAD
-    list1=[]
-    for i in df.columns:
-        list1.append(df[i].dtype)
-    prompt = """You are an expert in Python and Pandas. Generate Python code based on the user's question: {question}, using the given DataFrame `external_df`.
-
-### Guidelines:
-1. **DataFrame Details**:
-   - Column names: {df}
-   - Column datatypes: {datatype}
-   - Sample data: {sample}
-   - Null values for column: {null_values} 
-   - fill null values with empty string.
-   - Dont write Functions.
-2. The output must be a Pandas DataFrame named `output_df`. If no relevant columns match the question, set `output_df = None`.
-3. Use explicit imports for all necessary libraries (e.g., `import pandas as pd`) to prevent errors.
-4. Do not create a sample data or assume sample data, alter the DataFrame, or include any functionality beyond answering the question.
-5. Include concise comments in your code for clarity.
-
-### Key Points:
-- Use .lower for matching the strings becuase their might be chance that the data should consist of some upper case or captilaize type of strings.
-- Output only the Python code; no explanations, text, or examples.
-- If the question is unrelated to the DataFrame, return `None` for `output_df`.
-- No Need to write functions
-# Your code starts below:
-    """
-    prompt = PromptTemplate(template=prompt
-    , input_variables=["question","df","datatype","sample","null_values"])
-    prompt_formatted_str = prompt.format(
-        question=question,df=df.columns,datatype=list1,sample=df.sample(),null_values=df.isnull().sum()
-    )
-    prediction = model.invoke(prompt_formatted_str)
-    # prediction =prediction.text
-    prediction=prediction.replace("```python","")
-    prediction=prediction.replace("```","")
-    return prediction
-=======
     try:
         list1=[]
         for i in df.columns:
@@ -197,7 +149,6 @@ def excel_table(question,df):
         print(e)
     finally:
         append_to_excel("NLP Excel",question,prompt_formatted_str,prediction.usage_metadata["total_tokens"],prediction.usage_metadata["input_tokens"],prediction.usage_metadata["output_tokens"],0,"llm_results.xlsx",prediction1)
->>>>>>> ayan2
 
 # def python_graph(dataframe):
 #     temp_df=pd.DataFrame(json.loads(dataframe["Dataframe"]))
@@ -290,13 +241,8 @@ You are an expert in Python and Pandas. Generate Python code based on the user's
     prompt_formatted_str = prompt.format(
         question=question,df=df.columns,datatype=list1,sample=df.sample()
     )
-<<<<<<< HEAD
-    prediction = llm.generate_content(prompt_formatted_str)
-    prediction =prediction.text
-=======
     prediction = model.invoke(prompt_formatted_str)
     prediction =prediction
->>>>>>> ayan2
     prediction=prediction.replace("```python","")
     prediction=prediction.replace("```","")
     return prediction

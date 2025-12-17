@@ -4,11 +4,7 @@ from models.code_apex import generate_apex_pandas_code
 from langchain.schema import HumanMessage, AIMessage,SystemMessage
 from models.memory import get_by_session_id, InMemoryHistory
 from models.Code_generator import generate_pandas_code
-<<<<<<< HEAD
-
-=======
 from core.function import insert_into_tables
->>>>>>> ayan2
 
 from api.flexi_report import similar_questions
 
@@ -19,8 +15,6 @@ class APEX(BaseModel):
     sql_query:str
     session_id:str
 
-<<<<<<< HEAD
-=======
 class APEXHISTORY(BaseModel):
     report_name:str
     chat_id:str
@@ -29,7 +23,6 @@ class APEXHISTORY(BaseModel):
     question:str
     sql_query:str
     session_id:str
->>>>>>> ayan2
 
 router=APIRouter()
 
@@ -45,10 +38,6 @@ async def handle_question_async_apex(req: APEX):
         question = req.question
         # df_json = req.df
         logger.info(f"Question:{question}")
-<<<<<<< HEAD
-        logger.info(f"Detailed Prompt\n:{req.detailed_prompt}")
-=======
->>>>>>> ayan2
         history = get_by_session_id(req.session_id)
         history.add_messages([HumanMessage(content=question)])
         sample_code=similar_questions(question)
@@ -57,37 +46,19 @@ async def handle_question_async_apex(req: APEX):
         try:
             start = time.time()
             df = pd.read_sql(req.sql_query, con=connection)
-<<<<<<< HEAD
-            logger.info(df.head())
-            logger.info(df.shape)
-=======
             logger.info(f"Data Size:{len(df)}")
->>>>>>> ayan2
             print("Time Taken to load the report:", time.time() - start)
         except Exception as e:
             logger.error(e)
             raise ValueError(detail=e,status_code=786)
         
         local_vars = {"df": df, "output_df": None, "pd": pd}
-<<<<<<< HEAD
-        print("Columns:", df.columns.tolist())
-=======
->>>>>>> ayan2
         if sample_code['question'] != "No Sample Found":
             try:
                 logger.info("Entering Database Codes"*5)
                 exec(sample_code['Code'], local_vars)
-<<<<<<< HEAD
-                logger.info(sample_code['Code'])
-                output_df = local_vars.get("output_df")
-                print(output_df.shape)
-                print(output_df.columns.tolist())
-                logger.info(output_df.to_json(orient="records"))
-                
-=======
                 output_df = local_vars.get("output_df")
 
->>>>>>> ayan2
                 if len(output_df) >= 5:
                     history.add_messages([AIMessage(content="Generated Code" + sample_code['Code'])])
                     history.add_messages([SystemMessage(content="Data Obtained (Sample 5 data points)" + str(output_df.head(5)))])
@@ -104,11 +75,7 @@ async def handle_question_async_apex(req: APEX):
         
         start = time.time()
         
-<<<<<<< HEAD
-        generated_code = await generate_apex_pandas_code(question, df, req.detailed_prompt, llm, history)
-=======
         generated_code = await generate_apex_pandas_code(question, df, req.detailed_prompt, llm_chat, history)
->>>>>>> ayan2
         print(f"Time Taken While Executing NLP: {time.time() - start}")
 
         generated_code = generated_code.replace("```python", "").replace("```", "")
@@ -168,8 +135,6 @@ async def handle_question_async_apex(req: APEX):
 @router.post("/answer1")
 async def handle_question(req: APEX):
     return await handle_question_async_apex(req)
-<<<<<<< HEAD
-=======
 
 
 
@@ -315,4 +280,3 @@ async def handle_question_async_apex_history(req: APEXHISTORY):
 @router.post("/answer_history")
 async def handle_question(req: APEXHISTORY):
     return await handle_question_async_apex_history(req)
->>>>>>> ayan2

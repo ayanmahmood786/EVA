@@ -1,11 +1,8 @@
 
 from langchain.prompts import PromptTemplate
 import asyncio
-<<<<<<< HEAD
-=======
 from core.function import append_to_excel
 from core.utils import *
->>>>>>> ayan2
 
 
 
@@ -84,19 +81,6 @@ async def generate_pandas_code(question, df, sample_code, llm, history):
             "sample_question":sample_code['question'],
             "conversation_history":format_history(history)
         }
-<<<<<<< HEAD
-
-        chain = prompt | llm
-        generated_code = await asyncio.wait_for(
-                chain.ainvoke(prompt_str),
-                timeout=60,
-            )
-            
-        return generated_code.content
-    except Exception as e:
-        print(e)
-        return None
-=======
         prompt_formatted_str = prompt.format(
             question= question,df= df.columns,
             datatype=list1,
@@ -119,4 +103,3 @@ async def generate_pandas_code(question, df, sample_code, llm, history):
         return None
     finally:
         await append_to_excel("FLEXI-Report Framework Data Sorting",question,prompt_formatted_str,generated_code.usage_metadata["total_tokens"],generated_code.usage_metadata["input_tokens"],generated_code.usage_metadata["output_tokens"],0,"llm_results.xlsx",generated_code)
->>>>>>> ayan2

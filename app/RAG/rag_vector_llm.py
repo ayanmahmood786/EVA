@@ -16,27 +16,16 @@ import re
 import time
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain.embeddings import HuggingFaceEmbeddings
-<<<<<<< HEAD
-
-=======
 from core.function import append_to_excel
->>>>>>> ayan2
 
 # os.remove(r"D:\New Folder\RAG\chroma")
 file_path=r"D:\RAG\PDF\inventory\Inventory v7.4.pdf"
 PATH="chroma"
 os.environ['GOOGLE_API_KEY']=os.getenv('GOOGLE_API_KEY')
-<<<<<<< HEAD
-os.environ["LANGCHAIN_TRACING_V2"]=os.getenv('LANGCHAIN_TRACING_V2')
-os.environ["LANGCHAIN_ENDPOINT"]=os.getenv('LANGCHAIN_ENDPOINT')
-os.environ["LANGCHAIN_API_KEY"]=os.getenv('LANGCHAIN_API_KEY')
-os.environ["LANGCHAIN_PROJECT"]=os.getenv('LANGCHAIN_PROJECT')
-=======
 # os.environ["LANGCHAIN_TRACING_V2"]=os.getenv('LANGCHAIN_TRACING_V2')
 # os.environ["LANGCHAIN_ENDPOINT"]=os.getenv('LANGCHAIN_ENDPOINT')
 # os.environ["LANGCHAIN_API_KEY"]=os.getenv('LANGCHAIN_API_KEY')
 # os.environ["LANGCHAIN_PROJECT"]=os.getenv('LANGCHAIN_PROJECT')
->>>>>>> ayan2
 tokens=""
 # os.environ['HF_TOKEN'] = ''
 from huggingface_hub import login
@@ -84,54 +73,6 @@ def vector_stored(all_splits,embeddings,PATH):
 
 
 
-<<<<<<< HEAD
-def model(vt,question):
-    # retriever = vt.as_retriever(search_type="similarity", search_kwargs={"k": 3})
-    # system_prompt = (
-    #     "You are an assistant for question-answering tasks. "
-    #     "Use the following pieces of retrieved context to answer "
-    #     "the question. If you don't know the answer, say that you "
-    #     "don't know. Use three sentences maximum and keep the "
-    #     "answer concise."
-    #     ""
-    #     "\n\n"
-    #     "{context}"
-    # )
-
-    # prompt = ChatPromptTemplate.from_messages(
-    #     [
-    #         ("system", system_prompt),
-    #         ("human", "{input}"),
-    #     ]
-    # )
-    # # print(results[0][1])
-
-    # question_answer_chain = create_stuff_documents_chain(llm, prompt)
-    # rag_chain = create_retrieval_chain(retriever, question_answer_chain)
-    # response = rag_chain.invoke({"input":question})
-    # return response
-    def format_docs(docs):
-        return "\n\n".join(doc.page_content for doc in docs)
-    
-    retriever = vt.as_retriever()
-    system_prompt = (
-        """User Question:{question}
-        Provide a Detailed and Precise Answer in around 100-200 words and in points if possible. 
-        Use the following pieces of retrieved context to answer. 
-        the question. If you don't know the answer, say that you 
-        don't know.If you dont know Just say the area is out of context and please try again in 30-50 words.
-        No need to provide any additional or important notes.
-        \n\n
-        
-        CONTEXT:
-        {context}"""
-    )
-    prompt = ChatPromptTemplate.from_template(system_prompt)
-    chain=(
-    {"context": retriever | format_docs, "question":RunnablePassthrough()} | prompt | llm )
-    response=chain.invoke(question)
-    return response
-=======
 async def model(vt,question):
     try:
         def format_docs(docs):
@@ -160,4 +101,3 @@ async def model(vt,question):
 #    finally:
       
 #        await append_to_excel("Help ON Ebizframe ERP",question,prompt,response.usage_metadata["total_tokens"],response.usage_metadata["input_tokens"],response.usage_metadata["output_tokens"],0,response)
->>>>>>> ayan2

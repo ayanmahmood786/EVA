@@ -6,11 +6,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 import RAG.rag_vector_llm
 from core.log import logger
-<<<<<<< HEAD
-=======
 from core.config import VECTOR_DIR
 from core.utils import embeddings
->>>>>>> ayan2
 # Temporary directory for storing PDFs
 
 
@@ -35,21 +32,13 @@ def split_text_into_chunks(text: str) -> List[str]:
 
 def create_vector_store(text_chunks: List[str], user_id: str):
 
-<<<<<<< HEAD
-    user_vector_store_path = os.path.join(api.VECTOR_DIR, f"faiss_index_{user_id}")
-=======
     user_vector_store_path = os.path.join(VECTOR_DIR, f"faiss_index_{user_id}")
->>>>>>> ayan2
 
     new_vectors = FAISS.from_texts(text_chunks, embedding=RAG.rag_vector_llm.embeddings)
 
 
     if os.path.exists(user_vector_store_path):
-<<<<<<< HEAD
-        existing_vectors = FAISS.load_local(user_vector_store_path, api.embeddings, allow_dangerous_deserialization=True)
-=======
         existing_vectors = FAISS.load_local(user_vector_store_path, embeddings, allow_dangerous_deserialization=True)
->>>>>>> ayan2
         existing_vectors.merge_from(new_vectors)
         existing_vectors.save_local(user_vector_store_path)
     else:

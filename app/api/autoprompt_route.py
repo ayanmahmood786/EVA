@@ -48,11 +48,7 @@ async def generate_suggestion(question_request: QuestionRequest):
     try:
         if question_request.session in context_dict:
             logger.info("Old Session Continued")
-<<<<<<< HEAD
-            result = suggestions(question_request.question, previous_question=str(context_dict[session]))
-=======
             result = await suggestions(question_request.question, previous_question=str(context_dict[session]))
->>>>>>> ayan2
             logger.info("Response Generated From LLM Successfully")
             context_dict[session].append(question_request.question)  
             qa_data = json.loads(clean_response(result))
@@ -60,11 +56,7 @@ async def generate_suggestion(question_request: QuestionRequest):
 
             context_dict[session] = [question_request.question]
             logger.info("New Session Detected And Added")
-<<<<<<< HEAD
-            result = suggestions(question_request.question, previous_question=str(context_dict[session]))
-=======
             result = await suggestions(question_request.question, previous_question=str(context_dict[session]))
->>>>>>> ayan2
             logger.info("Response Generated From LLM Successfully")
             qa_data = json.loads(clean_response(result))
 

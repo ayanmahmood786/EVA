@@ -2,11 +2,7 @@ from core.utils import *
 from core.log import logger
 from typing import Dict, Any
 from models.insight_suggest import insightsuggestions
-<<<<<<< HEAD
-
-=======
 from core.function import update_history_flexi
->>>>>>> ayan2
 
 
 class ResponseModel(BaseModel):
@@ -20,8 +16,6 @@ class QuestionRequestFlexi(BaseModel):
     instructions: Optional[str] = ""
 
 
-<<<<<<< HEAD
-=======
 
 
 class QuestionRequestFlexiHistory(BaseModel):
@@ -34,7 +28,6 @@ class QuestionRequestFlexiHistory(BaseModel):
     instructions: Optional[str] = ""
 
 
->>>>>>> ayan2
 router=APIRouter()
 
 flexi_dict={}
@@ -50,14 +43,8 @@ async def generate_suggestions_endpoint(request: QuestionRequestFlexi):
             last_entry = flexi_dict[request.session][-1]
             previous_question = last_entry.get("question", "") if isinstance(last_entry, dict) else last_entry
         
-<<<<<<< HEAD
-        # Generate with LangGraph
-        start=time.time()
-        result = insightsuggestions(
-=======
         start=time.time()
         result = await insightsuggestions(
->>>>>>> ayan2
             question=request.question,
             previous_question=previous_question,
             data=request.data,
@@ -80,8 +67,6 @@ async def generate_suggestions_endpoint(request: QuestionRequestFlexi):
 
 
 
-<<<<<<< HEAD
-=======
 async def generate_suggestions_endpoint_history(request: QuestionRequestFlexiHistory):
     global flexi_dict
     
@@ -138,17 +123,13 @@ async def generate_suggestions_endpoint_history(request: QuestionRequestFlexiHis
         )
 
 
->>>>>>> ayan2
 @router.post("/flexi-suggestions/", response_model=ResponseModel)
 async def generate_suggestions(request: QuestionRequestFlexi):
     return await generate_suggestions_endpoint(request)
 
-<<<<<<< HEAD
-=======
 @router.post("/flexi-suggestions-history/", response_model=ResponseModel)
 async def generate_suggestions(request: QuestionRequestFlexiHistory):
     return await generate_suggestions_endpoint_history(request)
 
 
 
->>>>>>> ayan2
