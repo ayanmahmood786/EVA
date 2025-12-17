@@ -28,4 +28,6 @@ langchain-community==0.3.31
 faiss-cpu
 langgraph
 seaborn
+gunicorn==21.2.0
+
 # python 3.12.2
