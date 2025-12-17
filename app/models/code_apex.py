@@ -2,6 +2,13 @@
 from langchain.prompts import PromptTemplate
 import asyncio
 import api
+<<<<<<< HEAD
+=======
+from core.utils import *
+from core.log import logger
+from core.function import append_to_excel
+
+>>>>>>> ayan2
 
 
 
@@ -11,7 +18,11 @@ def format_history(history):
     for msg in history.messages:
         role = "User" if msg.type == "human" else "Assistant"
         lines.append(f"{role}: {msg.content}")
+<<<<<<< HEAD
     return "\n".join(lines)
+=======
+    return "\n".join(lines[-10:])
+>>>>>>> ayan2
 
 
 async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history):
@@ -30,7 +41,11 @@ async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history)
     - Column names: {df} use always these names while generating the code.
     - Column datatypes: {datatype}
     - Sample data present in the table: {sample}
+<<<<<<< HEAD
     -Null values in each column: {null}
+=======
+    - Null values in each column: {null}
+>>>>>>> ayan2
 
 
     2. The output must be a Pandas DataFrame named `output_df`. If no relevant columns match the question or not have converstaion related to that query. 
@@ -42,6 +57,10 @@ async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history)
     8. Always write the full code.
     9. Always merge everything into a single output_df.
     10. fill numerical null values columns with fillna(0).
+<<<<<<< HEAD
+=======
+    11. Always filter the data with top 10 and bottom 10 in each section.
+>>>>>>> ayan2
 
     ### Key Points:
     - Do not produce a sample data or dataframe
@@ -98,7 +117,11 @@ async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history)
 
     # Your code starts below:
     """
+<<<<<<< HEAD
         # api.logger(f"Prompt:{prompt}")
+=======
+
+>>>>>>> ayan2
         prompt = PromptTemplate(
             template=prompt_template,
             input_variables=["question", "df", "datatype", "sample", "detailed_prompt","conversation_history","null"],
@@ -113,6 +136,7 @@ async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history)
             "conversation_history":format_history(history),
             "null":df.isnull().sum()
         }
+<<<<<<< HEAD
         chain = prompt | llm
         generated_code = await asyncio.wait_for(
                 chain.ainvoke(prompt_str),
@@ -123,3 +147,24 @@ async def generate_apex_pandas_code(question, df, detailed_prompt, llm, history)
     except Exception as e:
         print(e)
         return None
+=======
+        prompt_formatted_str = ""
+        chain = prompt | llm 
+
+        generated_code = await asyncio.wait_for(
+                    chain.ainvoke(prompt_str),
+                    timeout=1200,
+                )
+
+        return {
+        "code":generated_code.content,
+        "input_tokens":generated_code.usage_metadata["input_tokens"],
+        "output_tokens":generated_code.usage_metadata["output_tokens"],
+        "total_tokens":generated_code.usage_metadata["total_tokens"]
+        }
+    except Exception as e:
+        logger.error(e)
+        return None
+#    finally:
+#        await append_to_excel("FLEXI-Report Framework Data Sorting",question,prompt_str,generated_code.usage_metadata["total_tokens"],generated_code.usage_metadata["input_tokens"],generated_code.usage_metadata["output_tokens"],0)
+>>>>>>> ayan2

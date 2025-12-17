@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 venv
+=======
+.env
+__pycache__
+dir/graph/
+dir/faiss_vectors/
+>>>>>>> ayan2

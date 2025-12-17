@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "Tax Insight": "app/dir/PROMPTS/Tax Insights.txt",
     "PO vs Grn Matching": "app/dir/PROMPTS/PO Vs GRN Matching.txt",
     "Time based Insights": "app/dir/PROMPTS/Time Based Insights.txt",
@@ -29,4 +30,36 @@
     "Replenishment & Shortage Planning":"app/dir/PROMPTS/Replenishment & Shortage Planning",
     "Supplier Performance":"app/dir/PROMPTS/Supplier Performance",
     "Product insights":"app/dir/PROMPTS/Product Insights"
+=======
+    "Tax Insight": "dir/PROMPTS/Tax Insights.txt",
+    "PO vs Grn Matching": "dir/PROMPTS/PO Vs GRN Matching.txt",
+    "Time based Insights": "dir/PROMPTS/Time Based Insights.txt",
+    "Item- Wise purchase Analysis": "dir/PROMPTS/Item Wise Purchase Analysis.txt",
+    "Supplier wise purchase analysis": "dir/PROMPTS/Supplier Wise Purchase Analysis.txt",
+    "Order Fulfilment & Status": "dir/PROMPTS/Order Fullfilment.txt",
+    "Item / Material Tracking": "dir/PROMPTS/Material item Analysis.txt",
+    "Financial Tracking": "dir/PROMPTS/Open PO.txt",
+    "Delivery & Supply chain ": "dir/PROMPTS/Delivery and supply chain.txt",
+    "Delivery & Supply chain Performance":"dir/PROMPTS/Delivery and supply chain performance",
+    "Sales performance": "dir/PROMPTS/Sales Performance.txt",
+    "Customer Analysis": "dir/PROMPTS/Customer Analysis.txt",
+    "Product Analysis": "dir/PROMPTS/Product Analysis.txt",
+    "Geographical Insights": "dir/PROMPTS/GeoGraphical insights.txt",
+    "Growth Analysis": "dir/PROMPTS/Growth Analysis.txt",
+    "Customer Level Insights": "dir/PROMPTS/Customer Level Analysis.txt",
+    "Product Level Insights": "dir/PROMPTS/Product Analysis.txt",
+    "Warehouse & Location Insights": "dir/PROMPTS/Warehouse Wise Analysis.txt",
+    "Stock Movement Analysis": "dir/PROMPTS/Stock Movement Analysis.txt",
+    "Replenishment, Shortage Planning & Stock Transfer Optimization": "dir/PROMPTS/Replenishment, Shortage Planning & Stock Transfer Optimization.txt",
+    "Dead stock Identification":"dir/PROMPTS/Dead stock Identification.txt",
+    "Fast vs Slow Moving Items":"dir/PROMPTS/Fast vs Slow Moving Items",
+    "Warehouse-specific Stock Holding":"dir/PROMPTS/Warehouse-specific Stock Holding",
+    "Financial Impact":"dir/PROMPTS/Financial Impact.txt",
+    "Expiry Risk (for perishable or shelf-life items)":"dir/PROMPTS/Expiry Risk",
+    "Slow-Moving & Fast-Moving Items":"dir/PROMPTS/Slow-Moving & Fast-Moving Items",
+    "Category Subgroup Level Analysis":"dir/PROMPTS/Category and Subgroup Level Analysis",
+    "Replenishment & Shortage Planning":"dir/PROMPTS/Replenishment & Shortage Planning",
+    "Supplier Performance":"dir/PROMPTS/Supplier Performance",
+    "Product insights":"dir/PROMPTS/Product Insights"
+>>>>>>> ayan2
 }

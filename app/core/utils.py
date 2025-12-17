@@ -2,7 +2,11 @@ from fastapi import FastAPI, HTTPException, Request, Form, File, UploadFile, Bac
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
+<<<<<<< HEAD
 from core.config import ORACLE_USER, ORACLE_PASSWORD, ORACLE_DSN
+=======
+from core.config import ORACLE_USER, ORACLE_PASSWORD, ORACLE_DSN, EBIZ_USER, EBIZ_PASSWORD
+>>>>>>> ayan2
 
 # Pydantic
 from pydantic import BaseModel
@@ -28,7 +32,11 @@ from rapidfuzz import fuzz
 from fastapi import APIRouter, HTTPException, Request, Form, BackgroundTasks
 # Oracle DB
 import oracledb
+<<<<<<< HEAD
 
+=======
+from langchain_community.callbacks import get_openai_callback
+>>>>>>> ayan2
 # Langchain / AI
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import FAISS
@@ -47,8 +55,28 @@ from core.config import GOOGLE_API_KEY
 os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
 
 
+<<<<<<< HEAD
 llm=GoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.5)
 llm_chat=ChatGoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.5)
 connection=oracledb.connect(user=ORACLE_USER,password=ORACLE_PASSWORD,dsn=ORACLE_DSN)
 connection_voice=oracledb.connect(user=ORACLE_USER,password=ORACLE_PASSWORD,dsn=ORACLE_DSN)
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+=======
+
+async def create_connection_ebizai():
+    connection=oracledb.connect(user=EBIZ_USER,password=EBIZ_PASSWORD,dsn=ORACLE_DSN)
+    return connection  
+    
+try:
+  llm=GoogleGenerativeAI(model="gemini-2.5-flash-lite",temperature=0.5)
+  llm_chat=ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite",temperature=0.5)
+  connection=oracledb.connect(user=ORACLE_USER,password=ORACLE_PASSWORD,dsn=ORACLE_DSN)
+  connection_voice=oracledb.connect(user=ORACLE_USER,password=ORACLE_PASSWORD,dsn=ORACLE_DSN)
+  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+  
+
+    
+
+except Exception as e:
+  print(e)
+>>>>>>> ayan2

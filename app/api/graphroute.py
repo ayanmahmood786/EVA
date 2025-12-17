@@ -24,6 +24,7 @@ async def graph_generator(req:ReqNLP):
     try:
         session_id=req.session_id
         df_json = req.df
+<<<<<<< HEAD
         if os.path.exists(f"output{session_id}.jpg"):
             os.remove(f"output{session_id}.jpg")
         df_dict = json.loads(df_json)
@@ -38,6 +39,22 @@ async def graph_generator(req:ReqNLP):
         exec(generated_code, local_vars)
         file_path = f"output{session_id}.jpg"  
         return FileResponse(path=file_path, media_type="image/jpg", filename="output.jpg")
+=======
+        if os.path.exists(f"dir/graph/output{session_id}.jpg"):
+            os.remove(f"dir/graph/output{session_id}.jpg")
+        df_dict = json.loads(df_json)
+        df = pd.DataFrame(df_dict)
+        start = time.time()
+        code = await graph(df,llm_chat)
+        logger.info("Graph Generated")
+        # logger.info(code)
+        print(f"Time Taken While Executing GRAPH: {time.time() - start}") 
+        generated_code = code.replace("```python", "").replace("```", "").replace("output.jpg",f"dir/graph/output{session_id}.jpg")
+        local_vars = {"df": df, "output_df": None}
+        exec(generated_code, local_vars)
+        file_path = f"dir/graph/output{session_id}.jpg"  
+        return FileResponse(path=file_path, media_type="image/jpg", filename=f"output{session_id}.jpg")
+>>>>>>> ayan2
 
 
     except Exception as e:

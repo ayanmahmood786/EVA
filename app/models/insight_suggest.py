@@ -5,22 +5,38 @@ from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import GoogleGenerativeAI
 
 from langchain.prompts import PromptTemplate
+<<<<<<< HEAD
 from langchain_google_genai import GoogleGenerativeAI
+=======
+from langchain_google_genai import ChatGoogleGenerativeAI,GoogleGenerativeAI
+>>>>>>> ayan2
 from langchain_core.runnables import RunnablePassthrough
 import json
 
 from langgraph.graph import StateGraph, END
 from typing import TypedDict, Dict, Any, Optional
 from langgraph.graph import START
+<<<<<<< HEAD
 
 from core.function import format_answer
+=======
+from google.api_core.exceptions import ResourceExhausted
+
+from core.function import format_answer
+from core.utils import *
+from core.function import append_to_excel
+>>>>>>> ayan2
 # API Key Configuration
 os.environ['API_KEY'] = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=os.environ["API_KEY"])
 
 # Initialize model
 model = genai.GenerativeModel("gemini-2.0-flash", generation_config={"temperature": 0.50})
+<<<<<<< HEAD
 llm= GoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.25)
+=======
+llm= ChatGoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.25)
+>>>>>>> ayan2
 
 total_tokens = None
 output_tokens =None
@@ -157,6 +173,11 @@ def insightsuggestions(question, previous_question,data):
             "Question_1": "",
             "Question_2": "",
             "Question_3": ""
+<<<<<<< HEAD
+=======
+            
+            
+>>>>>>> ayan2
         }}
         }}
     """
@@ -165,7 +186,13 @@ def insightsuggestions(question, previous_question,data):
         prompt = PromptTemplate(template=prompt, input_variables=["question", "previous_question", "data","format"])
         prompt_formatted_str = prompt.format(question=question, previous_question=previous_question,data=data,format=format['Format'])
         prediction = model.generate_content(prompt_formatted_str)
+<<<<<<< HEAD
         return prediction.text
+=======
+        return {"question":prediction.text,        "input_tokens":result.usage_metadata["input_tokens"],
+        "output_tokens":result.usage_metadata["output_tokens"],
+        "total_tokens":result.usage_metadata["total_tokens"]}
+>>>>>>> ayan2
 
     except ValueError as e:
         print(f"Error parsing JSON: {e}")
@@ -173,24 +200,40 @@ def insightsuggestions(question, previous_question,data):
 
 
 
+<<<<<<< HEAD
 # Initialize model (assuming you have this configured)
 model = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.5)
+=======
+model = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.5)
+>>>>>>> ayan2
 
 # def similar_questions(question):
 #     """Function to get similar questions format - placeholder implementation"""
 #     return {"Format": "Main Insights, Key Metrics, Detailed Analysis"}
 
+<<<<<<< HEAD
 def conversion_module(question, previous_question, data, Instructions=""):
     """
     Handles the conversion of data into insights and HTML formatting
     """
     print(Instructions)
+=======
+async def conversion_module(question, previous_question, data, Instructions=""):
+    """
+    Handles the conversion of data into insights and HTML formatting
+    """
+#    print(Instructions)
+>>>>>>> ayan2
     if Instructions == "":
         format_info = similar_questions(question)
         format_info = format_info['Format']
     else:
         format_info = Instructions
+<<<<<<< HEAD
     print(format_info)
+=======
+#    print(format_info)
+>>>>>>> ayan2
     # print(format_info[:100])
     conversion_prompt = """
 **Objective**:
@@ -217,7 +260,11 @@ def conversion_module(question, previous_question, data, Instructions=""):
    - **Absolute numerical precision** - always provide exact figures alongside scaled versions
    - **No currency symbols** - use descriptive terms instead (e.g., "revenue" instead of "$")
    - Strategic recommendations based on data patterns
+<<<<<<< HEAD
    
+=======
+   - **Always show month names rather than month number **.
+>>>>>>> ayan2
 
 
 3. **Visual Design Requirements**:
@@ -240,6 +287,10 @@ def conversion_module(question, previous_question, data, Instructions=""):
    - **Bullet Point** while presenting a sentence inside the card. 
    - **Benchmark comparisons** where data allows
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ayan2
 6. **Technical Implementation**:
    - Use Tailwind CSS via CDN with forms and container-queries plugins
    - Include Google Fonts (Poppins) and Material Icons properly
@@ -282,6 +333,7 @@ Generate comprehensive HTML dashboard with deep, multi-layered insights.
             "data":data, 
             "format":format_info
         }
+<<<<<<< HEAD
         print(format_info)
         html_chain={"question":RunnablePassthrough(),"previous_question":RunnablePassthrough(),"data":RunnablePassthrough(),"format":RunnablePassthrough() } |  prompt | model
         return {"answer": html_chain.invoke(prompt_formatted_str)}
@@ -292,6 +344,36 @@ Generate comprehensive HTML dashboard with deep, multi-layered insights.
 
 
 def question_generation_module(question, previous_question, data):
+=======
+#        print(format_info)
+        prompt_formatted = prompt.format(            question=question, 
+            previous_question=previous_question, 
+            data=data, 
+            format=format_info)
+
+        html_chain={"question":RunnablePassthrough(),"previous_question":RunnablePassthrough(),"data":RunnablePassthrough(),"format":RunnablePassthrough() } |  prompt | llm
+        result=html_chain.invoke(prompt_formatted_str)
+        return {"answer": result.content, 
+                "input_tokens":result.usage_metadata["input_tokens"],
+        "output_tokens":result.usage_metadata["output_tokens"],
+        "total_tokens":result.usage_metadata["total_tokens"]
+        }
+    except ResourceExhausted as e:
+        # Return the error to the frontend
+        return {
+            "answer": f"Google Gemini Resource Exhausted: {str(e)}",
+            "error": True,
+            "type": "RESOURCE_EXHAUSTED"
+        }
+    except Exception as e:
+        print(f"Error in conversion module: {e}")
+        return {"answer": f"Error in conversion: {str(e)}"}
+    finally:
+        await append_to_excel("FLEXI-Report html",question,prompt_formatted,result.usage_metadata["total_tokens"],result.usage_metadata["input_tokens"],result.usage_metadata["output_tokens"],0,"llm_results.xlsx",result.content)
+
+
+async def question_generation_module(question, previous_question, data):
+>>>>>>> ayan2
     """
     Handles the generation of follow-up questions
     """
@@ -326,6 +408,7 @@ def question_generation_module(question, previous_question, data):
         #     previous_question=previous_question,
         #     data=data
         # )
+<<<<<<< HEAD
         chain=prompt | model
         prediction = chain.invoke({"question": question, "previous_question": previous_question, "data": data})
         
@@ -334,11 +417,25 @@ def question_generation_module(question, previous_question, data):
         prediction=prediction.replace("```json","").replace("```","")
         questions = json.loads(prediction)
         return {"questions": questions}
+=======
+        chain=prompt | llm
+        prediction = await chain.ainvoke({"question": question, "previous_question": previous_question, "data": data})
+        
+        prediction1=prediction.content.replace("```json","").replace("```","")
+        questions = json.loads(prediction1)
+        return {"questions": questions,        "input_tokens":prediction.usage_metadata["input_tokens"],
+        "output_tokens":prediction.usage_metadata["output_tokens"],
+        "total_tokens":prediction.usage_metadata["total_tokens"]}
+>>>>>>> ayan2
 
     except Exception as e:
         print(f"Error in question generation module: {e}")
         return {"questions": {
+<<<<<<< HEAD
             "Question_1": "What are the top performing categories by sales volume?",
+=======
+            "Question_1": "What are the top performing categories by volume?",
+>>>>>>> ayan2
             "Question_2": "How has customer acquisition trended over the last quarter?",
             "Question_3": "Which regions show the highest growth in user engagement?"
         }}
@@ -353,6 +450,10 @@ class AgentState(TypedDict):
     question_result: Dict[str, Any]
     final_output: Dict[str, Any]
     Instructions: Optional[str] = ""
+<<<<<<< HEAD
+=======
+    token_usage: Dict[str, int]
+>>>>>>> ayan2
 
 
 def create_insight_suggestion_graph():
@@ -360,6 +461,7 @@ def create_insight_suggestion_graph():
     workflow = StateGraph(AgentState)
     
     # Define nodes
+<<<<<<< HEAD
     def conversion_node(state: AgentState):
         print("Running conversion node...")
         result = conversion_module(
@@ -373,11 +475,44 @@ def create_insight_suggestion_graph():
     def question_generation_node(state: AgentState):
         print("Running question generation node...")
         result = question_generation_module(
+=======
+    async def conversion_node(state: AgentState):
+        print("Running conversion node...")
+        result = await conversion_module(
+        state["question"],
+        state["previous_question"],
+        state["data"],
+        state["Instructions"]
+    )
+        
+        token_usage = state.get("token_usage", {})
+        
+        token_usage.update({
+                "conversion_input": result.get("input_tokens", 0),
+                "conversion_output": result.get("output_tokens", 0),
+                "conversion_total": result.get("total_tokens", 0),
+            })
+        
+        return {
+                "conversion_result": result,
+                "token_usage": token_usage
+            }
+    
+    async def question_generation_node(state: AgentState):
+        print("Running question generation node...")
+        result = await  question_generation_module(
+>>>>>>> ayan2
             state["question"],
             state["previous_question"],
             state["data"]
         )
+<<<<<<< HEAD
         return {"question_result": result}
+=======
+        return {"question_result": result,
+
+        }
+>>>>>>> ayan2
     
     # Add nodes
     workflow.add_node("conversion", conversion_node)
@@ -391,12 +526,34 @@ def create_insight_suggestion_graph():
     )
     
     # Add merge node
+<<<<<<< HEAD
     def merge_results(state: AgentState):
         print("Merging results...")
         return {
             "final_output": {
                 "Answer_to_user_question": format_answer(state["conversion_result"]["answer"].replace("```html","").replace("```","")),
                 "Auto_prompt": state["question_result"]["questions"]
+=======
+    async def merge_results(state: AgentState):
+        tokens = state.get("token_usage", {})
+    
+        total_input = tokens.get("conversion_input", 0) + tokens.get("question_input", 0)
+        total_output = tokens.get("conversion_output", 0) + tokens.get("question_output", 0)
+    
+        return {
+            "final_output": {
+                "Answer_to_user_question": format_answer(
+                    state["conversion_result"]["answer"]
+                    .replace("```html", "")
+                    .replace("```", "")
+                ),
+                "Auto_prompt": state["question_result"],
+                "Token_Usage": {
+                    "input_tokens": total_input,
+                    "output_tokens": total_output,
+                    "total_tokens": total_input + total_output,
+                }
+>>>>>>> ayan2
             }
         }
     
@@ -411,10 +568,17 @@ def create_insight_suggestion_graph():
     return workflow.compile()
 
 # Create the graph instance
+<<<<<<< HEAD
 insight_graph = create_insight_suggestion_graph()
 
 # Simple synchronous version using invoke instead of ainvoke
 def insightsuggestions(question, previous_question, data, Instructions):
+=======
+insight_graph =  create_insight_suggestion_graph()
+
+# Simple synchronous version using invoke instead of ainvoke
+async def insightsuggestions(question, previous_question, data, Instructions):
+>>>>>>> ayan2
     """
     Simple synchronous version using .invoke() instead of .ainvoke()
     """
@@ -426,6 +590,7 @@ def insightsuggestions(question, previous_question, data, Instructions):
         conversion_result={},
         question_result={},
         final_output={},
+<<<<<<< HEAD
         Instructions=Instructions
     )
     
@@ -434,6 +599,25 @@ def insightsuggestions(question, previous_question, data, Instructions):
         result = insight_graph.invoke(initial_state)
         return result["final_output"]
     
+=======
+        Instructions=Instructions,
+        token_usage={}
+    )
+    
+    try:
+        result = await insight_graph.ainvoke(initial_state)
+        return result["final_output"]
+    
+        
+    except ResourceExhausted as e:
+        return {
+            "success": False,
+            "error_type": "RESOURCE_EXHAUSTED",
+            "message": "Google Gemini API quota exceeded. Please try again later.",
+            "detail": str(e)
+        }
+
+>>>>>>> ayan2
     except Exception as e:
         print(f"Error in insightsuggestions: {e}")
         return {

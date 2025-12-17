@@ -17,6 +17,7 @@ import pandas as pd
 import logging
 from fastapi import FastAPI, HTTPException, Request ,UploadFile, Form,File
 from fastapi.responses import FileResponse
+<<<<<<< HEAD
 load_dotenv()
 genai.configure(api_key='AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw')
 from langchain_google_genai import GoogleGenerativeAI
@@ -25,6 +26,13 @@ api_key="AIzaSyD_YBPgMRGmQYj3dQ2jzqhFSOHdQ8jMwyw"
 
 
 model=GoogleGenerativeAI(model="gemini-2.0-flash",api_key=api_key,temperature=1)
+=======
+from langchain_google_genai import ChatGoogleGenerativeAI
+from core.function import append_to_excel
+
+
+model=ChatGoogleGenerativeAI(model="gemini-2.0-flash",temperature=1)
+>>>>>>> ayan2
 # llm = genai.GenerativeModel("gemini-2.0-flash",generation_config={"temperature":0.5})
 #Loggers
 logging.basicConfig(level=logging.INFO)
@@ -68,6 +76,7 @@ logger=logging.getLogger(__name__)
 # #     return df
 
 def excel_table(question,df):
+<<<<<<< HEAD
     list1=[]
     for i in df.columns:
         list1.append(df[i].dtype)
@@ -103,6 +112,92 @@ def excel_table(question,df):
     prediction=prediction.replace("```python","")
     prediction=prediction.replace("```","")
     return prediction
+=======
+    try:
+        list1=[]
+        for i in df.columns:
+            list1.append(df[i].dtype)
+        prompt = """You are an expert in Python and Pandas. Generate Python code based on the user's question: {question}, using the provided DataFrame named `external_df`.
+
+    ### Guidelines:
+
+    1. **DataFrame Context**:
+    - Column names: {df}
+    - Column data types: {datatype}
+    - Sample data: {sample}
+    - Null values per column: {null_values}
+    - Fill all null values with an empty string (`''`) before performing any operations.
+
+    2. **Code Output Requirements**:
+    - The final output must be a Pandas DataFrame named `output_df`.
+    - If the question is unrelated to the DataFrame columns, set `output_df = None`.
+    - Do not create or modify sample data. Use only the provided `external_df`.
+
+    3. **Import & Style Rules**:
+    - Always include explicit imports (e.g., `import pandas as pd`, `import numpy as np`).
+    - Avoid defining functions, classes, or unnecessary helpers.
+    - Write concise, readable, and safe code blocks with brief comments explaining each logical step.
+
+    4. **Data Handling & Safety**:
+    - Replace NaN/None values with empty strings (`''`) before performing operations.
+    - Convert numeric-like columns stored as objects into numeric dtype safely using:
+        ```python
+        external_df['column'] = pd.to_numeric(external_df['column'], errors='coerce').fillna(0)
+        ```
+    - This prevents errors such as:
+        - `TypeError: Column 'X' has dtype object, cannot use method 'nlargest' with this dtype`
+    - Before using `.nlargest()`, `.sort_values()`, or mathematical operations, ensure the column is numeric.
+    - Convert columns to string only when necessary (e.g., for text concatenation or string matching).
+    - Limit outputs to 100 rows using `.head(100)` for safety.
+    - Use lowercase (`.str.lower()`) for case-insensitive matching.
+    - Always ensure relevant identifiers are preserved in the output (e.g., “supplier” for top suppliers).
+
+    5. **Logical Pandas Functions to Use (as applicable)**:
+    - **Filtering & Selection**: `.loc[]`, `.iloc[]`, `.query()`
+    - **String Operations**: `.str.lower()`, `.str.contains()`, `.str.strip()`, `.str.replace()`
+    - **Aggregation & Grouping**: `.groupby()`, `.agg()`, `.sum()`, `.mean()`, `.count()`, `.nunique()`
+    - **Sorting & Ranking**: `.sort_values()`, `.nlargest()`, `.nsmallest()`
+    - **Merging & Joining**: `.merge()`, `.join()`, `.concat()`
+    - **Null Handling**: `.fillna('')`, `.dropna()`
+    - **Unique & Duplicates**: `.drop_duplicates()`, `.duplicated()`
+    - **Conditional Logic**: `np.where()`, `.apply()`, or boolean indexing
+    - **Column Operations**: `.assign()`, `.rename()`, `.astype()`
+    - **Output Limiting**: `.head(100)` to ensure row-safety
+
+    6. **Error Handling**:
+    - Always guard against:
+        - `TypeError: can only concatenate str (not "float") to str`
+        - `TypeError: Column 'X' has dtype object, cannot use method 'nlargest' with this dtype`
+        - Any log-style error messages such as:
+        `2025-10-29 11:42:33,507 [ERROR] EVA - Error: Column 'X' has dtype object, cannot use method 'nlargest' with this dtype`
+
+    7. **Output Format**:
+    - Output **only valid Python code** — no markdown, explanations, or commentary.
+    - Ensure the final line defines `output_df`.
+    - The code must be directly executable as-is.
+
+    ### Key Instructions:
+    - Use only Pandas and built-in Python functions.
+    - Do not assume or synthesize new data.
+    - Always ensure `output_df` exists in the final code (even if set to `None`).
+
+    # Your code starts below:
+        """
+        prompt = PromptTemplate(template=prompt
+        , input_variables=["question","df","datatype","sample","null_values"])
+        prompt_formatted_str = prompt.format(
+            question=question,df=df.columns,datatype=list1,sample=df.sample(),null_values=df.isnull().sum()
+        )
+        prediction = model.invoke(prompt_formatted_str)
+        # prediction =prediction.text
+        prediction1=prediction.content.replace("```python","")
+        prediction1=prediction.replace("```","")
+        return prediction1
+    except Exception as e:
+        print(e)
+    finally:
+        append_to_excel("NLP Excel",question,prompt_formatted_str,prediction.usage_metadata["total_tokens"],prediction.usage_metadata["input_tokens"],prediction.usage_metadata["output_tokens"],0,"llm_results.xlsx",prediction1)
+>>>>>>> ayan2
 
 # def python_graph(dataframe):
 #     temp_df=pd.DataFrame(json.loads(dataframe["Dataframe"]))
@@ -195,8 +290,13 @@ You are an expert in Python and Pandas. Generate Python code based on the user's
     prompt_formatted_str = prompt.format(
         question=question,df=df.columns,datatype=list1,sample=df.sample()
     )
+<<<<<<< HEAD
     prediction = llm.generate_content(prompt_formatted_str)
     prediction =prediction.text
+=======
+    prediction = model.invoke(prompt_formatted_str)
+    prediction =prediction
+>>>>>>> ayan2
     prediction=prediction.replace("```python","")
     prediction=prediction.replace("```","")
     return prediction

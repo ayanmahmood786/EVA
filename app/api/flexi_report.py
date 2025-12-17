@@ -70,7 +70,11 @@ async def handle_question_async(req: ReqNLP):
             try:
                 start = time.time()
                 df = pd.read_sql(req.sql_query, con=connection)
+<<<<<<< HEAD
                 logger.info(df.shape)
+=======
+                # logger.info("Data Size:", df.shape())
+>>>>>>> ayan2
                 print("Time Taken to load the report:", time.time() - start)
             except Exception as e:
                 logger.error(e)
@@ -82,10 +86,14 @@ async def handle_question_async(req: ReqNLP):
         if sample_code['question'] != "No Sample Found":
             try:
                 exec(sample_code['Code'], local_vars)
+<<<<<<< HEAD
                 logger.info(sample_code['Code'])
                 output_df = local_vars.get("output_df")
                 print(output_df.columns.tolist())
                 logger.info(output_df.to_json(orient="records"))
+=======
+                output_df = local_vars.get("output_df")
+>>>>>>> ayan2
                 
                 if len(output_df) >= 5:
                     history.add_messages([AIMessage(content="Generated Code" + sample_code['Code'])])
@@ -100,13 +108,20 @@ async def handle_question_async(req: ReqNLP):
                 logger.error(e)
         
         start = time.time()
+<<<<<<< HEAD
         # Use await instead of asyncio.run() since we're already in async context
+=======
+>>>>>>> ayan2
         generated_code = await generate_pandas_code(question, df, sample_code, llm_report, history)
         print(f"Time Taken While Executing NLP: {time.time() - start}")
 
         generated_code = generated_code.replace("```python", "").replace("```", "")
+<<<<<<< HEAD
         logger.info("Code Generated:\n")
         logger.info(f"{generated_code}")
+=======
+        logger.info("Code Generated:")
+>>>>>>> ayan2
         
         start = time.time()
         exec(generated_code, local_vars)
@@ -134,7 +149,11 @@ async def handle_question_async(req: ReqNLP):
             raise ValueError(e)
 
         output_json = output_df.to_json(orient="records")
+<<<<<<< HEAD
         print("Output Generated Successfully")
+=======
+        logger.info("Output Generated Successfully")
+>>>>>>> ayan2
         
         return output_json
 
@@ -145,7 +164,11 @@ async def handle_question_async(req: ReqNLP):
         if 'history' in locals():
             history.add_messages([SystemMessage(content=f"Error: {str(e)}")])
         # Raise the exception instead of returning it
+<<<<<<< HEAD
         raise HTTPException(status_code=404, detail={
+=======
+        raise HTTPException(status_code=500, detail={
+>>>>>>> ayan2
             "Dataframe": [],
             "issue": str(e),
             "trace": traceback.format_exc()

@@ -19,4 +19,8 @@ logging.basicConfig(
 )
 
 # Create logger
+<<<<<<< HEAD
 logger = logging.getLogger("FastAPIApp")
+=======
+logger = logging.getLogger("EVA")
+>>>>>>> ayan2

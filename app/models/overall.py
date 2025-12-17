@@ -6,10 +6,19 @@ from langchain.chains import LLMChain
 from langchain_google_genai import GoogleGenerativeAI
 import asyncio
 import os
+<<<<<<< HEAD
 os.environ['GOOGLE_API_KEY']=os.getenv("GOOGLE_API_KEY")
 
 import api
 llm_overall=GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.5)
+=======
+from core.function import append_to_excel
+
+os.environ['GOOGLE_API_KEY']=os.getenv("GOOGLE_API_KEY")
+
+import api
+llm_chat=ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.5)
+>>>>>>> ayan2
 import json
 
 
@@ -38,6 +47,7 @@ Output format (JSON only):
 }}
 """
     prompt = PromptTemplate(template=template, input_variables=["name", "type", "sample","question"])
+<<<<<<< HEAD
     chain =LLMChain(prompt=prompt,llm=llm_overall)
     result = await chain.ainvoke({
         "name": df.columns.tolist(),
@@ -46,6 +56,31 @@ Output format (JSON only):
         "question":question,
     })
     return result['text']
+=======
+    prompt_formatted_str = prompt.format(            name=df.columns.tolist(),
+        type= df.dtypes.astype(str).tolist(),
+            sample= df.head(1).to_json(orient="records"),
+            question=question,)
+
+    chain =prompt | llm_chat
+    with get_openai_callback() as cb:
+            
+        result = await chain.ainvoke({
+            "name": df.columns.tolist(),
+            "type": df.dtypes.astype(str).tolist(),
+            "sample": df.head(1).to_json(orient="records"),
+            "question":question,
+        })
+
+        await append_to_excel("Overall QT Generation",question,prompt_formatted_str,result.usage_metadata["total_tokens"],result.usage_metadata["input_tokens"],result.usage_metadata["output_tokens"],0,"llm_results.xlsx",result.content)
+
+        return {
+        "result":result.content.replace("```json","").replace("```",""),
+        "input_tokens":result.usage_metadata["input_tokens"],
+        "output_tokens":result.usage_metadata["output_tokens"],
+        "total_tokens":result.usage_metadata["total_tokens"]
+        }
+>>>>>>> ayan2
 
 
 # ===============================
@@ -87,11 +122,24 @@ always use df=df.copy()
         datatype=column_dtypes,
         sample=df.sample(min(3, len(df))).to_dict(orient="records")
     )
+<<<<<<< HEAD
 
     result = await asyncio.to_thread(llm_overall.invoke, formatted_prompt)
     code = result.replace("```python", "").replace("```", "")
     logger.info(f"{question}:{code}")
     return code
+=======
+    with get_openai_callback() as cb:
+        result = await llm_chat.ainvoke(formatted_prompt)
+        
+        await append_to_excel("Overall Data Code Generation",question,formatted_prompt,result.usage_metadata["total_tokens"],result.usage_metadata["input_tokens"],result.usage_metadata["output_tokens"],0,"llm_results.xlsx",result.content)
+
+        code = result.content.replace("```python", "").replace("```", "")
+        # logger.info(f"{question}:{code}")
+        return {"code":code,        "input_tokens":result.usage_metadata["input_tokens"],
+        "output_tokens":result.usage_metadata["output_tokens"],
+        "total_tokens":result.usage_metadata["total_tokens"]}
+>>>>>>> ayan2
 
 
 # ===============================
@@ -101,6 +149,7 @@ async def handler(questions_json: str,df) -> dict:
     questions = json.loads(questions_json)["Questions"]
     code_tasks = [async_tb_table(q, df) for q in questions]
     code_results = await asyncio.gather(*code_tasks)
+<<<<<<< HEAD
 
     result_data = {}
     for question, code in zip(questions, code_results):
@@ -111,6 +160,27 @@ async def handler(questions_json: str,df) -> dict:
         except Exception as e:
             result_data[question] = f"Execution Error: {str(e)}"
     return result_data
+=======
+    input_tokens = 0
+    output_tokens = 0
+    total_tokens = 0
+
+    result_data = {}
+    for question, code in zip(questions, code_results):
+        codes = code["code"]
+        input_tokens += code["input_tokens"]
+        output_tokens += code["output_tokens"]
+        total_tokens += code["total_tokens"]
+        local_vars = {"df": df, "output_df": None}
+        try:
+            exec(codes, local_vars)
+            result_data[question] = local_vars["output_df"].to_json(orient='records')
+        except Exception as e:
+            result_data[question] = f"Execution Error: {str(e)}"
+    return {"result": result_data,                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "total_tokens": total_tokens}
+>>>>>>> ayan2
 
 # deploped 10 sept 
 
@@ -139,6 +209,14 @@ Instructions:
 
 You are a front-end UI expert. Generate a modern, responsive HTML dashboard using **Tailwind CSS**, **Google Fonts (Poppins)**, and **Material Icons**. Follow these design and layout rules:
 
+<<<<<<< HEAD
+=======
+Link css using :  <!-- ✅ Tailwind CSS CDN (with forms + container-queries plugins) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+
+>>>>>>> ayan2
 1. **Use Tailwind CSS via CDN** (`https://cdn.tailwindcss.com?plugins=forms,container-queries`).
 2. **Use Poppins font** via Google Fonts and apply it to the body.
 3. Use a **gradient header** (`from-indigo-500 to-pink-500`) with only a **title** with rounded corners and font size 25px.
@@ -167,5 +245,20 @@ Data for Analysis:
 
     """
     prompt = PromptTemplate(template=template, input_variables=['data','prompt'])
+<<<<<<< HEAD
     chain = prompt | llm_overall
     return chain.invoke({"data": ans_bundle,'prompt':prompt})
+=======
+    prompt_formatted_str = prompt.format(data=ans_bundle,prompt=prompt)
+
+    chain = prompt | llm_chat
+    with get_openai_callback() as cb:
+        result=await chain.ainvoke({"data": ans_bundle,'prompt':prompt})
+        await append_to_excel("Overall Final Insight ","",prompt_formatted_str,result.usage_metadata["total_tokens"],result.usage_metadata["input_tokens"],result.usage_metadata["output_tokens"],0,"llm_results.xlsx",result.content)
+          
+        return {"result":result.content,
+        "input_tokens":result.usage_metadata["input_tokens"],
+        "output_tokens":result.usage_metadata["output_tokens"],
+        "total_tokens":result.usage_metadata["total_tokens"]
+        }
+>>>>>>> ayan2

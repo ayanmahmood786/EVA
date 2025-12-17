@@ -3,6 +3,10 @@ import os
 import google.generativeai as genai
 from langchain_core.prompts import PromptTemplate
 import logging
+<<<<<<< HEAD
+=======
+from core.function import append_to_excel
+>>>>>>> ayan2
 
 # API Key Configuration
 os.environ['API_KEY'] = os.getenv('GOOGLE_API_KEY')
@@ -21,7 +25,11 @@ output_tokens =None
 prompt_tokens=None
 elapsed_time = None  # Renaming 'times' to 'elapsed_time' to avoid conflict
 
+<<<<<<< HEAD
 def suggestions(question, previous_question):
+=======
+async def suggestions(question, previous_question):
+>>>>>>> ayan2
     global total_tokens,output_tokens,prompt_tokens
     global elapsed_time  # Using 'elapsed_time' instead of 'times'
     
@@ -92,5 +100,10 @@ def suggestions(question, previous_question):
     except ValueError as e:
         logger.error(f"Error parsing JSON: {e}")
         print(status_code=500, detail="Error generating response from AI")
+<<<<<<< HEAD
 
+=======
+    finally:
+        await append_to_excel("Autoprompt",question,prompt_formatted_str,total_tokens,prompt_tokens,output_tokens,0,"llm_results.xlsx",prediction.text)
+>>>>>>> ayan2
 

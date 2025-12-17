@@ -72,10 +72,16 @@ async def voice_filter(quest: VoiceFilterRequest):
         columns = [desc[0] for desc in cursor.description]
         rows = cursor.fetchall()
         data = [dict(zip(columns, row)) for row in rows]
+<<<<<<< HEAD
         cursor.close()
         connection.close()
         logger.info(f"Fetched {len(data)} menu items.")
         logger.info(data)
+=======
+
+        logger.info(f"Fetched {len(data)} menu items.")
+        # logger.info(data)
+>>>>>>> ayan2
         list_commands = [item['OBJECT_NAME'] for item in data]
         response = predict_intent(quest.text, list_commands)
         intent = response.get("Intent", "")

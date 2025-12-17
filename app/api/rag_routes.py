@@ -15,13 +15,21 @@ UPLOAD_DIR = "RAG/uploaded_files"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 greetings = ["hi", "hello", "hey", "hola"]
 
+<<<<<<< HEAD
 class QuestionRequest(BaseModel):
+=======
+class RAGRequest(BaseModel):
+>>>>>>> ayan2
     question: str
     session_id: str
     custom: int
     user_id: str
 
+<<<<<<< HEAD
 class SessionID(BaseModel):
+=======
+class RAGSessionID(BaseModel):
+>>>>>>> ayan2
     session_id:str
     module:str
 
@@ -36,7 +44,11 @@ def format_answer(answer: str):
     return re.sub(r'\\b(.*?)\\b', r'<strong>\1</strong>', answer)
 
 @router.post("/rag_responses")
+<<<<<<< HEAD
 async def rag_response(question: QuestionRequest, request: Request, background_task: BackgroundTasks):
+=======
+async def rag_response(question: RAGRequest, request: Request, background_task: BackgroundTasks):
+>>>>>>> ayan2
     start = time.time()
     logger.info(f"Question: {question.question}")
 
@@ -50,14 +62,23 @@ async def rag_response(question: QuestionRequest, request: Request, background_t
         if question.question.lower().strip() in greetings:
             return JSONResponse(content={"Answer": "Hello! How can I help you today?"})
 
+<<<<<<< HEAD
         answer = await asyncio.to_thread(model, vt_store, question.question)
+=======
+        answer = await model(vt_store, question.question)
+>>>>>>> ayan2
         formatted = format_answer(answer.content)
         duration = round(time.time() - start, 2)
         return JSONResponse(content={"Answer": formatted, "Time": f"{duration}s"})
     except Exception as e:
         logger.error(f"Error in rag_response: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+<<<<<<< HEAD
 
+=======
+    # finally:
+        
+>>>>>>> ayan2
 
 @router.post("/create_vectors")
 async def create_vectors(request:Request,module:str=Form(...)):
@@ -80,7 +101,11 @@ async def create_vectors(request:Request,module:str=Form(...)):
 
 
 @router.post("/most_frequent")
+<<<<<<< HEAD
 async def frequent_questions(user:SessionID):
+=======
+async def frequent_questions(user:RAGSessionID):
+>>>>>>> ayan2
     data=fetch_frequent(user.session_id,user.module)
     if data !=None:
         new_data={

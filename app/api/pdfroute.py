@@ -2,13 +2,22 @@ from core.utils import *
 import RAG
 from models.pdf import process_pdf_background
 from core.log import logger
+<<<<<<< HEAD
+=======
+from core.function import append_to_excel
+>>>>>>> ayan2
 from typing import List
 import uuid
 from langchain.chains.question_answering import load_qa_chain
 # Developed by 21/8
 # - Ayan Mahmood
+<<<<<<< HEAD
 
 llm_pdf=GoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.5)
+=======
+import random
+llm_pdf=ChatGoogleGenerativeAI(model="gemini-2.0-flash",temperature=0.5)
+>>>>>>> ayan2
 
 
 
@@ -64,6 +73,7 @@ async def upload_pdfs(files: List[UploadFile] = File(...), background_tasks: Bac
 @router.post("/query/")
 async def ask_question(user_request: FileRequest):
     """Answer a question based on the user's uploaded PDFs."""
+<<<<<<< HEAD
     logger.info(f"User Query: {user_request.question} | User ID: {user_request.user_id}")
 
     if len(user_request.question) < 10:
@@ -95,3 +105,47 @@ async def ask_question(user_request: FileRequest):
     response = chain({"input_documents": docs, "question": user_request.question}, return_only_outputs=True)
     
     return {"reply": response["output_text"]}
+=======
+    try:
+        logger.info(f"User Query: {user_request.question} | User ID: {user_request.user_id}")
+
+        if len(user_request.question) < 10:
+            return {"reply": "Please improvise your question"}
+
+        vector_store = load_vector_store(user_request.user_id)
+
+        # Perform similarity search
+        docs = vector_store.similarity_search(user_request.question)
+
+        # If no relevant documents found
+        if not docs:
+            return {"reply": "The answer is not available in the context."}
+
+        # Construct prompt
+        prompt_template = """
+        Answer the question as detailed as possible from the provided context.
+        If the answer is not in the provided context, or the user question is irrelevant or a greeting, just say:
+        "The answer is not available in the context."
+
+        Context: {context}
+        Question: {question}
+
+        Answer:
+        """
+        prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
+        chain = load_qa_chain(llm_pdf, chain_type="stuff", prompt=prompt)
+
+        response = chain.invoke({"input_documents": docs, "question": user_request.question}, return_only_outputs=True)
+        
+        return {"reply": response["output_text"]}
+    except Exception as e:
+        logger.error("NLP PDF:",e)
+    finally:
+        prompt=    random.randint(700, 2000)
+        output=     random.randint(700, 2000)
+#        await append_to_excel("NLP PDF","",    
+#    (prompt + output),
+#    prompt,
+#    output,
+#0)
+>>>>>>> ayan2
