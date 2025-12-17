@@ -11,32 +11,21 @@ httpx==0.28.1
 pydantic==2.12.2
 sentence-transformers==5.1.1
 langchain==0.3.27
-<<<<<<< HEAD
-langchain-google-genai==2.1.12
-langchain-chroma==1.1.1
-oracledb==3.4.0
-pandas==2.3.3
-numpy==2.3.4
-=======
 langchain-google-genai==2.0.10
 langchain-chroma==0.2.1
 chromadb
 oracledb==3.4.0
 pandas==2.3.3
 numpy<2.3.4
->>>>>>> ayan2
 fuzzywuzzy==0.18.0
 openpyxl==3.1.5
 json-repair==0.52.0
 rapidfuzz==3.14.1
 matplotlib==3.10.7
 PyPDF2==3.0.1
-<<<<<<< HEAD
 langchain-community==0.3.31
-=======
 langchain-community==0.3.31
 faiss-cpu
 langgraph
 seaborn
 # python 3.12.2
->>>>>>> ayan2
